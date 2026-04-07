@@ -1,304 +1,297 @@
-/* --- CONFIGURACIÓ DE FONT I VARIABLES --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap');
+/* FOODLOGISTIC S.A. - CYBERPUNK HUD INTERFACE 
+   Architecture: Gaming / Futurista / Ultra-Visual
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap');
 
 :root {
-    /* Paleta de colors basada en el teu logo */
-    --primary: #0a3d62;          /* Blau fosc professional */
-    --primary-dark: #072d48;
-    --accent: #78e08f;           /* Verd poma del logo */
-    --accent-hover: #60c978;
-    --text-main: #2d3436;
-    --text-muted: #636e72;
-    --bg-light: #f8fafc;
-    --white: #ffffff;
+    /* Paleta Gaming / Neon */
+    --base-dark: #050a10;
+    --base-deep: #020508;
+    --neon-green: #00ff41;
+    --neon-green-glow: rgba(0, 255, 65, 0.5);
+    --neon-blue: #00d2ff;
+    --neon-blue-glow: rgba(0, 210, 255, 0.5);
     
-    /* Efectes moderns */
-    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --radius: 12px;
+    /* Glassmorphism */
+    --glass-bg: rgba(10, 20, 30, 0.7);
+    --glass-border: rgba(0, 255, 65, 0.2);
+    --glass-blur: blur(12px);
+    
+    /* Animacions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* --- RESET BÀSIC --- */
+/* --- BASE & ESTRUCTURA --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none; /* Ocultem el cursor per al sistema personalitzat */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
+    background-color: var(--base-dark);
+    color: #e0e0e0;
     font-family: 'Inter', sans-serif;
-    color: var(--text-main);
-    line-height: 1.6;
-    background-color: var(--white);
     overflow-x: hidden;
+    line-height: 1.6;
+    background-image: 
+        linear-gradient(var(--base-dark) 0%, transparent 100%),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.05) 0%, transparent 80%),
+        repeating-linear-gradient(0deg, transparent 0, transparent 1px, rgba(0, 255, 65, 0.03) 1px, rgba(0, 255, 65, 0.03) 2px);
+    background-size: 100% 100%, 100% 100%, 100% 4px; /* Efecte scanlines */
 }
 
-h1, h2, h3 {
-    font-family: 'Poppins', sans-serif;
+/* Scrollbar Gaming */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--base-deep);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+    border-radius: 10px;
 }
 
-/* --- NAVEGACIÓ STICKY --- */
+/* Selecció de text */
+::selection {
+    background: var(--neon-green);
+    color: var(--base-dark);
+}
+
+/* --- NAVEGACIÓ --- */
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
     z-index: 1000;
-    box-shadow: var(--shadow-sm);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 0;
+    transition: var(--transition-smooth);
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 55px;
-    display: block;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2.5rem;
+nav.scrolled {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
 }
 
 .nav-link {
+    font-family: 'Orbitron', sans-serif;
     text-decoration: none;
-    color: var(--primary);
+    color: #fff;
     font-weight: 600;
-    font-size: 0.95rem;
-    transition: var(--transition);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: var(--transition-fast);
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
 }
 
 .nav-link:hover {
-    color: var(--accent-hover);
+    color: var(--neon-green);
+    text-shadow: 0 0 8px var(--neon-green-glow);
+}
+
+.nav-link:hover::before {
+    width: 80%;
 }
 
 /* --- HERO SECTION --- */
 .hero {
-    padding-top: 80px;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    color: var(--white);
+    background: radial-gradient(circle at center, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
+}
+
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, #fff 0%, var(--neon-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.4));
+    animation: glowPulse 3s infinite alternate;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.7;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* --- CARDS (SERVEIS) --- */
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    backdrop-filter: var(--glass-blur);
+    transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
 }
 
-/* Decoració del fons */
-.hero::after {
+.card::before {
     content: '';
     position: absolute;
-    width: 400px;
-    height: 400px;
-    background: var(--accent);
-    filter: blur(150px);
-    opacity: 0.15;
-    bottom: -100px;
-    right: -100px;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+    transition: 0.5s;
 }
 
-.hero-content {
-    max-width: 850px;
-    padding: 2rem;
-    z-index: 1;
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--neon-green);
+    background: rgba(0, 255, 65, 0.05);
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
 }
 
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-    animation: fadeInUp 0.8s ease-out;
+.card:hover::before {
+    left: 100%;
 }
 
-.hero-title span {
-    color: var(--accent);
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2.5rem;
-    opacity: 0.9;
-    animation: fadeInUp 1s ease-out;
+.card h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-green);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 5px var(--neon-green-glow);
 }
 
 /* --- BOTONS --- */
-.btn {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background-color: var(--accent);
-    color: var(--primary);
-    text-decoration: none;
+.btn-neon {
+    background: transparent;
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: 'Orbitron', sans-serif;
     font-weight: 700;
+    padding: 1rem 2.5rem;
     border-radius: 50px;
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(120, 224, 143, 0.3);
-    background-color: var(--accent-hover);
-}
-
-/* --- SERVEIS (GRID MODERNA) --- */
-.services {
-    padding: 100px 2rem;
-    background-color: var(--bg-light);
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 4rem;
-}
-
-.services-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-}
-
-.service-card {
-    background: var(--white);
-    padding: 3rem 2rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    text-align: center;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-md);
-}
-
-.service-icon {
-    font-size: 2.5rem;
-    color: var(--accent-hover);
-    margin-bottom: 1.5rem;
-}
-
-/* --- SOBRE NOSALTRES --- */
-.about {
-    padding: 100px 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-    flex-wrap: wrap;
-}
-
-.about-content {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-image {
-    flex: 1;
-    min-width: 300px;
-    border-radius: var(--radius);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: none;
+    transition: var(--transition-smooth);
+    position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
 }
 
-.about-image img {
-    width: 100%;
-    display: block;
+.btn-neon:hover {
+    background: var(--neon-green);
+    color: var(--base-dark);
+    box-shadow: 0 0 40px var(--neon-green-glow);
+    transform: scale(1.05);
 }
 
-/* --- FORMULARI DE CONTACTE --- */
-.contact {
-    padding: 100px 2rem;
-    background: var(--bg-light);
-}
-
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--white);
+/* --- FORMULARI DASHBOARD --- */
+.form-container {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     padding: 3rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
+    border-radius: 20px;
 }
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--primary);
-}
-
-.form-control {
+input, textarea {
     width: 100%;
-    padding: 0.8rem 1rem;
-    border: 2px solid #e2e8f0;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem;
+    color: #fff;
     border-radius: 8px;
-    font-family: inherit;
-    transition: var(--transition);
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition-fast);
 }
 
-.form-control:focus {
+input:focus, textarea:focus {
     outline: none;
-    border-color: var(--accent);
+    border-color: var(--neon-blue);
+    background: rgba(0, 210, 255, 0.05);
+    box-shadow: 0 0 15px var(--neon-blue-glow);
+    transform: scale(1.01);
 }
+
+/* --- KEYFRAMES --- */
+@keyframes glowPulse {
+    from { filter: drop-shadow(0 0 5px rgba(0, 210, 255, 0.3)); }
+    to { filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.7)); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- UTILITATS --- */
+.fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+.floating { animation: float 4s ease-in-out infinite; }
+.text-neon-blue { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue-glow); }
+.text-neon-green { color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green-glow); }
 
 /* --- FOOTER --- */
 footer {
-    background: var(--primary-dark);
-    color: var(--white);
-    padding: 4rem 2rem;
+    background: var(--base-deep);
+    border-top: 1px solid var(--glass-border);
+    padding: 4rem 0;
     text-align: center;
 }
 
-.footer-socials {
-    margin-bottom: 2rem;
-}
-
-.footer-socials a {
-    color: var(--white);
+.social-icon {
     font-size: 1.5rem;
+    color: #fff;
     margin: 0 1rem;
-    transition: var(--transition);
+    transition: var(--transition-fast);
 }
 
-.footer-socials a:hover {
-    color: var(--accent);
-}
-
-/* --- ANIMACIONS --- */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-    .hero-title { font-size: 2.5rem; }
-    .nav-menu { display: none; } /* Per a un menú mòbil real caldria JS */
-    .about { text-align: center; }
+.social-icon:hover {
+    color: var(--neon-green);
+    filter: drop-shadow(0 0 10px var(--neon-green));
 }
