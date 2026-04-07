@@ -3,66 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Meva Empresa | Web Corporativa</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>FoodLogistíc S.A. | Logística Alimentària del Futur</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES I RESETS --- */
+        :root {
+            --primary: #0a3d62; /* Blau Fosc Profesional */
+            --primary-light: #3c6382;
+            --accent: #78e08f; /* Verd Clar del Logo (Accents) */
+            --accent-dark: #60c978;
+            --text-dark: #2d3436;
+            --text-light: #f1f2f6;
+            --white: #ffffff;
+            --gray-light: #f9f9f9;
+            --transition: all 0.3s ease-in-out;
+            --shadow: 0 4px 15px rgba(0,0,0,0.05);
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- BOTONS GENERICS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(120, 224, 143, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        /* --- ANIMACIONS --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo img {
+            height: 50px; /* Ajusta la mida del logo */
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 61, 98, 0.95) 0%, rgba(30, 81, 118, 0.8) 100%),
+                        url('https://images.unsplash.com/photo-1586864387917-f5a0ae8d4e1e?q=80&w=2000&auto=format&fit=crop'); /* Imatge de fons de logística d'alimentació */
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: var(--header-height);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* --- SERVEIS --- */
+        .services {
+            padding: 100px 0;
+            background-color: var(--gray-light);
+        }
+
+        .services-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(120, 224, 143, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            background-color: rgba(120, 224, 143, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-text {
+            color: var(--text-dark);
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* --- SOBRE NOSALTRES --- */
+        .about {
+            padding: 100px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-title {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .about-text {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        /* --- CALL TO ACTION (CTA) --- */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e5176 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-text {
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* --- CONTACTE --- */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--gray-light);
+        }
+
+        .contact-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(120, 224, 143, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-link {
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .footer-copy {
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* --- RESPONSIVE DISSENY --- */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-image { order: -1; } /* Imatge abans que el text a mòbil */
+        }
+
+        @media (max-width: 768px) {
+            :root { --header-height: 70px; }
+            .nav-menu {
+                display: none; /* Amaga el menú per defecte a mòbil */
+            }
+            .hero-title { font-size: 2rem; }
+            .services-title, .about-title, .contact-title { font-size: 2rem; }
+            .contact-form { padding: 30px; }
+        }
+    </style>
 </head>
 <body>
 
     <nav>
-        <ul>
-            <li><a href="#inici">Inici</a></li>
-            <li><a href="#serveis">Serveis</a></li>
-            <li><a href="#sobre-nosaltres">Sobre nosaltres</a></li>
-            <li><a href="#contacte">Contacte</a></li>
-        </ul>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="image_0.png" alt="FoodLogistíc Logo">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inici" class="nav-link">Inici</a></li>
+                <li><a href="#serveis" class="nav-link">Serveis</a></li>
+                <li><a href="#sobre-nosaltres" class="nav-link">Sobre Nosaltres</a></li>
+                <li><a href="#contacte" class="nav-link">Contacte</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <header id="inici">
-        <h1>Benvinguts a la Nostra Web Corporativa</h1>
-        <p>Solucions innovadores per al teu negoci.</p>
+    <header id="inici" class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Logística Alimentària <span>Segura</span>,<br>Eficient i Sostenible</h1>
+            <p class="hero-subtitle">Més que transport. Som la teva cadena de subministrament intel·ligent per a productes alimentaris fers i de qualitat.</p>
+            <a href="#contacte" class="btn">Connecta amb nosaltres</a>
+        </div>
     </header>
 
-    <section id="serveis">
-        <h2>Els Nostres Serveis</h2>
-        <div class="serveis-grid">
-            <div class="servei">
-                <h3>Consultoria</h3>
-                <p>Anàlisi profunda de les teves necessitats.</p>
-            </div>
-            <div class="servei">
-                <h3>Desenvolupament</h3>
-                <p>Creació de solucions a mida.</p>
+    <section id="serveis" class="services">
+        <div class="container">
+            <h2 class="services-title">Les Nostres Solucions</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-truck-ramp-box"></i></div>
+                    <h3 class="service-name">Transport Fred</h3>
+                    <p class="service-text">Mantenim la cadena de fred intacta des de l'origen fins a la destinació amb flotes avançades.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-warehouse"></i></div>
+                    <h3 class="service-name">Emmagatzematge</h3>
+                    <p class="service-text">Centres de distribució certificats amb control de temperatura i humitat òptims.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <h3 class="service-name">Trazabilitat</h3>
+                    <p class="service-text">Monitorització en temps real de la teva càrrega i estat de temperatura en cada pas.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="sobre-nosaltres">
-        <h2>Sobre nosaltres</h2>
-        <p>Som un equip compromès amb l'excel·lència i la innovació des de fa més de 10 anys.</p>
+    <section id="sobre-nosaltres" class="about">
+        <div class="container about-grid">
+            <div class="about-content">
+                <h2 class="about-title">Qui Som?</h2>
+                <p class="about-text">A FoodLogistíc S.A., no som simplement una empresa de transport. Som un equip compromès amb l'excel·lència alimentària, utilitzant la tecnologia més avançada per garantir que els productes frescos arribin al consumidor en perfectes condicions.</p>
+                <p class="about-text">La nostra missió és ser el teu partner de confiança en logística, oferint solucions personalitzades que optimitzin la teva cadena de subministrament.</p>
+                <a href="#contacte" class="btn">Parlem</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1590481878065-22b9b35b674b?q=80&w=800&auto=format&fit=crop" alt="FoodLogistíc Equip de Treball">
+            </div>
+        </div>
     </section>
 
-    <section id="contacte">
-        <h2>Contacte</h2>
-        <form id="contact-form">
-            <label for="nom">Nom:</label>
-            <input type="text" id="nom" name="nom" required>
+    <section class="cta">
+        <div class="container cta-content">
+            <h2 class="cta-title">Vols portar la teva logística alimentària al següent nivell?</h2>
+            <p class="cta-text">Aprofita la nostra experiència i tecnologia per garantir la frescor i eficiència dels teus productes.</p>
+            <a href="#contacte" class="btn-outline btn">Demanar un Pressupost Gratuit</a>
+        </div>
+    </section>
 
-            <label for="email">Correu electrònic:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="tel">Telèfon de contacte:</label>
-            <input type="tel" id="tel" name="tel">
-
-            <label for="missatge">Missatge:</label>
-            <textarea id="missatge" name="missatge" rows="5" required></textarea>
-
-            <button type="submit">Enviar</button>
-        </form>
+    <section id="contacte" class="contact">
+        <div class="container">
+            <h2 class="contact-title">Contacta amb FoodLogistíc S.A.</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Nom Complet / Empresa</label>
+                    <input type="text" id="name" class="form-control" placeholder="El teu nom o de l'empresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Correu Electrònic</label>
+                    <input type="email" id="email" class="form-control" placeholder="exemple@empresa.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Missatge</label>
+                    <textarea id="message" class="form-control" placeholder="Explica'ns breument què necessites..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit btn">Enviar Consulta</button>
+            </form>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 La Meva Empresa. Creat amb l'ajuda de Gemini (IA).</p>
-    </div>
+        <div class="container footer-content">
+            <div class="footer-socials">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="footer-copy">&copy; 2024 FoodLogistíc S.A. Tots els drets reservats.</p>
+        </div>
+    </footer>
 
-    </body>
+</body>
 </html>
