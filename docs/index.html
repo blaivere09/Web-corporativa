@@ -6,267 +6,8 @@
     <title>FoodLogistíc S.A. | Supply Chain HUD</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --neon-green: #00ff41;
-            --neon-blue: #00d2ff;
-            --cyber-dark: #050a10;
-            --glass: rgba(10, 20, 30, 0.7);
-            --font-main: 'Rajdhani', sans-serif;
-            --font-header: 'Orbitron', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none; /* Amaguem el cursor real per usar el personalitzat */
-        }
-
-        body {
-            background-color: var(--cyber-dark);
-            color: #e0e0e0;
-            font-family: var(--font-main);
-            overflow-x: hidden;
-        }
-
-        /* --- BACKGROUND CANVAS --- */
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        /* --- CUSTOM CURSOR --- */
-        #cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--neon-green);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            box-shadow: 0 0 15px var(--neon-green);
-            transition: transform 0.1s ease;
-        }
-
-        #cursor-dot {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: var(--neon-blue);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /* --- HUD ELEMENTS --- */
-        .scanline {
-            width: 100%;
-            height: 100px;
-            z-index: 999;
-            background: linear-gradient(0deg, rgba(0, 255, 65, 0) 0%, rgba(0, 255, 65, 0.05) 50%, rgba(0, 255, 65, 0) 100%);
-            opacity: 0.1;
-            position: fixed;
-            bottom: 100%;
-            animation: scanline 8s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes scanline {
-            0% { bottom: 100%; }
-            100% { bottom: -100px; }
-        }
-
-        /* --- NAVBAR --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
-            z-index: 100;
-        }
-
-        .logo {
-            font-family: var(--font-header);
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--neon-blue);
-            text-shadow: 0 0 8px var(--neon-blue);
-        }
-
-        /* --- HERO --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .glitch-title {
-            font-family: var(--font-header);
-            font-size: 5rem;
-            text-transform: uppercase;
-            position: relative;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-        }
-
-        .glitch-title::before, .glitch-title::after {
-            content: "FOODLOGISTÍC S.A.";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--cyber-dark);
-        }
-
-        .glitch-title::before {
-            left: 2px; text-shadow: -2px 0 var(--neon-blue);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-1 5s infinite linear alternate-reverse;
-        }
-
-        .glitch-title::after {
-            left: -2px; text-shadow: -2px 0 var(--neon-green);
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-2 5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-1 {
-            0% { clip: rect(10px, 9999px, 20px, 0); }
-            20% { clip: rect(60px, 9999px, 70px, 0); }
-            40% { clip: rect(30px, 9999px, 40px, 0); }
-            60% { clip: rect(80px, 9999px, 90px, 0); }
-            80% { clip: rect(50px, 9999px, 60px, 0); }
-            100% { clip: rect(10px, 9999px, 20px, 0); }
-        }
-
-        /* --- CARDS & SERVICES --- */
-        .section {
-            padding: 100px 10%;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .card:hover {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
-            transform: scale(1.02);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--neon-blue);
-        }
-
-        .card i {
-            font-size: 2.5rem;
-            color: var(--neon-green);
-            margin-bottom: 1.5rem;
-        }
-
-        /* --- BUTTONS --- */
-        .cyber-btn {
-            background: transparent;
-            border: 1px solid var(--neon-green);
-            color: var(--neon-green);
-            padding: 1rem 2.5rem;
-            font-family: var(--font-header);
-            text-transform: uppercase;
-            font-weight: bold;
-            position: relative;
-            transition: 0.3s;
-            overflow: hidden;
-            margin-top: 2rem;
-        }
-
-        .cyber-btn:hover {
-            background: var(--neon-green);
-            color: #000;
-            box-shadow: 0 0 25px var(--neon-green);
-        }
-
-        /* --- CONTACT FORM --- */
-        .contact-container {
-            background: var(--glass);
-            border: 1px solid rgba(0, 255, 65, 0.2);
-            padding: 3rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        input, textarea {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #333;
-            padding: 1rem;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            font-family: var(--font-main);
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .glitch-title { font-size: 2.5rem; }
-            .nav-links { display: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -276,7 +17,10 @@
     <div class="scanline"></div>
 
     <nav>
-        <div class="logo">FOODLOGISTÍC // HUD_v1.0</div>
+        <div class="nav-logo-container">
+            <img src="FoodLogisticLogo.png" alt="Logo" class="nav-logo-img">
+            <div class="logo-text">FOODLOGISTÍC // HUD</div>
+        </div>
         <div class="nav-links">
             <a href="#inici">Inici</a>
             <a href="#serveis">Protocols</a>
@@ -286,72 +30,53 @@
     </nav>
 
     <header class="hero" id="inici">
+        <img src="FoodLogisticLogo.png" alt="FoodLogistic Logo" class="hero-logo">
         <h1 class="glitch-title">FOODLOGISTÍC S.A.</h1>
-        <p style="letter-spacing: 5px; color: var(--neon-blue); font-weight: bold;">[ SYSTEM STATUS: OPERATIONAL ]</p>
+        <p class="status-text">[ SYSTEM STATUS: OPERATIONAL ]</p>
         <button class="cyber-btn">INITIATE MISSION</button>
     </header>
 
     <section class="section" id="serveis">
-        <h2 style="text-align: center; font-family: var(--font-header); margin-bottom: 4rem;">CORE SERVICES // LOGÍSTICA 4.0</h2>
+        <h2 class="section-title">CORE SERVICES // LOGÍSTICA 4.0</h2>
         <div class="grid">
-            <div class="card" data-tilt>
-                <i class="fas fa-snowflake"></i>
+            <div class="card">
+                <i class="fas fa-snowflake card-icon"></i>
                 <h3>CRYOGENIC COLD</h3>
                 <p>Mantenim la cadena de fred amb precisió nanomètrica en cada enviaments.</p>
             </div>
-            <div class="card" data-tilt>
-                <i class="fas fa-microchip"></i>
+            <div class="card">
+                <i class="fas fa-microchip card-icon"></i>
                 <h3>SMART TRACKING</h3>
                 <p>Trazabilitat quàntica. Sàpigues on és el seu producte en temps real (ms).</p>
             </div>
-            <div class="card" data-tilt>
-                <i class="fas fa-shield-virus"></i>
+            <div class="card">
+                <i class="fas fa-shield-virus card-icon"></i>
                 <h3>BIO-SECURITY</h3>
                 <p>Protocols de seguretat alimentària de nivell militar per a la seva tranquil·litat.</p>
             </div>
         </div>
     </section>
 
-    <section class="section" id="sobre" style="background: rgba(0, 255, 65, 0.02);">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2 style="font-family: var(--font-header); color: var(--neon-green);">EL NOSTRE ARXIU</h2>
-            <p style="font-size: 1.2rem; margin: 2rem 0;">Som l'enllaç digital entre el camp i la metròpolis. FoodLogistíc S.A. utilitza algorismes predictius per optimitzar la cadena de subministrament del demà.</p>
-            <div style="border-top: 1px solid var(--neon-green); width: 100px; margin: 0 auto;"></div>
-        </div>
-    </section>
-
-    <section class="section" id="contacte">
-        <h2 style="text-align: center; margin-bottom: 3rem;">OBRIR TERMINAL DE CONTACTE</h2>
-        <div class="contact-container">
-            <form>
-                <input type="text" placeholder="ID_USUARI">
-                <input type="email" placeholder="ENLLAÇ_EMAIL">
-                <textarea rows="5" placeholder="ENVIAR_MISSATGE_ENCRIPTAT"></textarea>
-                <button type="button" class="cyber-btn" style="width: 100%;">EXECUTE SEND</button>
-            </form>
-        </div>
-    </section>
-
-    <footer style="padding: 3rem; text-align: center; border-top: 1px solid rgba(0, 210, 255, 0.1);">
+    <footer>
         <p>&copy; 2026 FOODLOGISTÍC S.A. // ALL RIGHTS RESERVED // DESIGN BY AI_GEMINI</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        // --- 1. CURSOR PERSONALITZAT ---
+        // Cursor
         const cursor = document.getElementById('cursor');
         const dot = document.getElementById('cursor-dot');
-
         document.addEventListener('mousemove', (e) => {
             gsap.to(cursor, { x: e.clientX - 10, y: e.clientY - 10, duration: 0.1 });
             gsap.to(dot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0 });
         });
 
-        // --- 2. BACKGROUND PARTICLES (Canvas) ---
+        // Partículas de Fondo
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         let particles = [];
         class Particle {
             constructor() {
@@ -362,67 +87,28 @@
                 this.speedY = Math.random() * 0.5 - 0.25;
             }
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
             }
             draw() {
-                ctx.fillStyle = '#00ff41';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.fillStyle = '#00ff41'; ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
             }
         }
-
-        function initParticles() {
-            for (let i = 0; i < 100; i++) particles.push(new Particle());
-        }
-
-        function animateParticles() {
+        function init() { for (let i = 0; i < 100; i++) particles.push(new Particle()); }
+        function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animateParticles);
+            requestAnimationFrame(animate);
         }
-        initParticles();
-        animateParticles();
+        init(); animate();
 
-        // --- 3. ANIMACIONS SCROLL (GSAP) ---
+        // Scroll Animations
         gsap.registerPlugin(ScrollTrigger);
-
         gsap.from(".card", {
-            scrollTrigger: {
-                trigger: ".services",
-                start: "top 80%"
-            },
-            y: 100,
-            opacity: 0,
-            stagger: 0.2,
-            duration: 1,
-            ease: "power4.out"
-        });
-
-        // --- 4. EFECTE TILT (Senzill amb JS) ---
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const xc = rect.width / 2;
-                const yc = rect.height / 2;
-                const dx = x - xc;
-                const dy = y - yc;
-                gsap.to(card, {
-                    rotateX: -dy / 10,
-                    rotateY: dx / 10,
-                    duration: 0.5
-                });
-            });
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.5 });
-            });
+            scrollTrigger: { trigger: ".grid", start: "top 80%" },
+            y: 50, opacity: 0, stagger: 0.2, duration: 1, ease: "power4.out"
         });
     </script>
 </body>
