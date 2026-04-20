@@ -3,113 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLogistíc S.A. | Supply Chain HUD</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>FoodLogistíc | Futur i Logística</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
-    <div id="cursor"></div>
-    <div id="cursor-dot"></div>
-    <div class="scanline"></div>
+    <div class="background-overlay"></div>
 
-    <nav>
-        <div class="nav-logo-container">
-            <img src="FoodLogisticLogo.png" alt="Logo" class="nav-logo-img">
-            <div class="logo-text">FOODLOGISTÍC // HUD</div>
-        </div>
-        <div class="nav-links">
-            <a href="#inici">Inici</a>
-            <a href="#serveis">Protocols</a>
-            <a href="#sobre">Arxiu</a>
-            <a href="#contacte">Terminal</a>
-        </div>
+    <nav class="navbar">
+        <img src="FoodLogisticLogo.png" alt="Logo" class="nav-logo">
+        <ul class="nav-links">
+            <li><a href="#">Inici</a></li>
+            <li><a href="#">Serveis</a></li>
+            <li><a href="#">Innovació</a></li>
+            <li><a href="#" class="btn-contact">Contacte</a></li>
+        </ul>
     </nav>
 
-    <header class="hero" id="inici">
-        <img src="FoodLogisticLogo.png" alt="FoodLogistic Logo" class="hero-logo">
-        <h1 class="glitch-title">FOODLOGISTÍC S.A.</h1>
-        <p class="status-text">[ SYSTEM STATUS: OPERATIONAL ]</p>
-        <button class="cyber-btn">INITIATE MISSION</button>
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">Evolució Logística 2026</span>
+            <h1>L'art de moure <br> <span class="accent">el món.</span></h1>
+            <p>Fusionem la tecnologia quàntica amb la logística tradicional per a una distribució sense fronteres.</p>
+            <div class="cta-group">
+                <a href="#" class="btn-primary">Explora els Protocols</a>
+                <a href="#" class="btn-secondary">Veure el Vídeo</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="FoodLogisticLogo.png" alt="FoodLogistic Principal" class="hero-img-main">
+        </div>
     </header>
 
-    <section class="section" id="serveis">
-        <h2 class="section-title">CORE SERVICES // LOGÍSTICA 4.0</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-snowflake card-icon"></i>
-                <h3>CRYOGENIC COLD</h3>
-                <p>Mantenim la cadena de fred amb precisió nanomètrica en cada enviaments.</p>
+    <section class="features">
+        <div class="card">
+            <div class="card-glass">
+                <h3>01. Inteligència</h3>
+                <p>Algorismes predictius per a rutes òptimes.</p>
             </div>
-            <div class="card">
-                <i class="fas fa-microchip card-icon"></i>
-                <h3>SMART TRACKING</h3>
-                <p>Trazabilitat quàntica. Sàpigues on és el seu producte en temps real (ms).</p>
+        </div>
+        <div class="card">
+            <div class="card-glass">
+                <h3>02. Sostenibilitat</h3>
+                <p>Emissions zero en cada quilòmetre.</p>
             </div>
-            <div class="card">
-                <i class="fas fa-shield-virus card-icon"></i>
-                <h3>BIO-SECURITY</h3>
-                <p>Protocols de seguretat alimentària de nivell militar per a la seva tranquil·litat.</p>
+        </div>
+        <div class="card">
+            <div class="card-glass">
+                <h3>03. Seguretat</h3>
+                <p>Monitoratge biomètric de la càrrega.</p>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 FOODLOGISTÍC S.A. // ALL RIGHTS RESERVED // DESIGN BY AI_GEMINI</p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script>
-        // Cursor
-        const cursor = document.getElementById('cursor');
-        const dot = document.getElementById('cursor-dot');
-        document.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, { x: e.clientX - 10, y: e.clientY - 10, duration: 0.1 });
-            gsap.to(dot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0 });
-        });
-
-        // Partículas de Fondo
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let particles = [];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
-            }
-            update() {
-                this.x += this.speedX; this.y += this.speedY;
-                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-            }
-            draw() {
-                ctx.fillStyle = '#00ff41'; ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
-            }
-        }
-        function init() { for (let i = 0; i < 100; i++) particles.push(new Particle()); }
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        }
-        init(); animate();
-
-        // Scroll Animations
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.from(".card", {
-            scrollTrigger: { trigger: ".grid", start: "top 80%" },
-            y: 50, opacity: 0, stagger: 0.2, duration: 1, ease: "power4.out"
-        });
-    </script>
 </body>
 </html>
