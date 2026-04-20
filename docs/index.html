@@ -3,81 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T03: Servidor de Fitxers | FoodLogistic</title>
-    <link rel="stylesheet" href="style.css">
+    <title>FoodLogistic S.A. | Informe T03</title>
+    <style>
+        /* CSS INTEGRAT PER EVITAR ERRORS DE CÀRREGA */
+        :root {
+            --blau-logo: #1a5c8e;
+            --verd-logo: #2ecc71;
+            --gris-clar: #f4f7f6;
+            --blanc: #ffffff;
+            --text: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-clar);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* --- PORTADA (HERO SECTION) --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--blau-logo) 0%, #103a5a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--blanc);
+            padding: 20px;
+        }
+
+        .hero img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 2rem;
+            /* Això fa que el logo es vegi blanc si el fons és fosc */
+            filter: brightness(0) invert(1);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .btn-start {
+            background-color: var(--verd-logo);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-start:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- CONTINGUT TÈCNIC --- */
+        .container {
+            max-width: 1000px;
+            margin: -50px auto 50px;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--blanc);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--blau-logo);
+            border-bottom: 3px solid var(--verd-logo);
+            display: inline-block;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--blau-logo);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th {
+            background: var(--blau-logo);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .status {
+            font-weight: bold;
+            color: var(--verd-logo);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .container { margin-top: 20px; }
+        }
+    </style>
 </head>
 <body>
-    <nav class="sidebar">
-        <div class="logo">
-            <h2>Food<span>Logistic</span></h2>
-        </div>
-        <ul>
-            <li><a href="#intro">Introducció</a></li>
-            <li><a href="#fita1">1. Seguretat AD</a></li>
-            <li><a href="#fita2">2. Recursos SMB</a></li>
-            <li><a href="#fita3">3. Control FSRM</a></li>
-            <li><a href="#fita4">4. Verificació</a></li>
-        </ul>
-    </nav>
 
-    <main class="content">
-        <header>
-            <h1>T03: Implementació de Servidor de Fitxers</h1>
-            <p class="subtitle">Consultoria d'infraestructura segura i organitzada</p>
-        </header>
+    <section class="hero">
+        <img src="FoodLogisticLogo.png" alt="FoodLogistic Logo">
+        <h1>Servidor de Fitxers Segur</h1>
+        <p>Projecte T03 - Gestió de Dades i Infraestructura</p>
+        <a href="#detalls" class="btn-start">Veure Informe Tècnic</a>
+    </section>
 
-        <section id="intro" class="card">
-            <h3><span class="icon">🚀</span> Introducció</h3>
-            <p>Davant el creixement de <strong>FoodLogistic</strong>, s'implementa una solució centralitzada per evitar la compartimentació de dades. L'objectiu és una infraestructura segura basada en Windows Server amb controls NTFS, SMB i FSRM.</p>
-        </section>
-
-        <section id="fita1" class="card">
-            <h3><span class="icon">🛡️</span> Preparació Active Directory</h3>
-            <p>Configuració del domini <code>foodlogistic.test</code> amb Unitats Organitzatives (OU) i grups de seguretat:</p>
-            <div class="grid">
-                <div class="tag">Administracio</div>
-                <div class="tag">Transport</div>
-                <div class="tag">Direccio</div>
+    <div class="container" id="detalls">
+        
+        <section class="card">
+            <h2>01. Seguretat AD</h2>
+            <p>S'ha configurat l'estructura de dominis a <strong>foodlogistic.test</strong> per organitzar els departaments i protegir la informació segons el rol de l'usuari.</p>
+            <div class="grid-info">
+                <div class="info-box">
+                    <strong>Administració</strong>
+                    <p>Factures i albarans.</p>
+                </div>
+                <div class="info-box">
+                    <strong>Transport</strong>
+                    <p>Logística i xofers.</p>
+                </div>
+                <div class="info-box">
+                    <strong>Direcció</strong>
+                    <p>Gerència i confidencial.</p>
+                </div>
             </div>
         </section>
 
-        <section id="fita2" class="card">
-            <h3><span class="icon">📂</span> Recursos Compartits</h3>
+        <section class="card">
+            <h2>02. Recursos Compartits</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Carpeta</th>
+                        <th>Recurs</th>
                         <th>Mètode</th>
-                        <th>Accés</th>
+                        <th>Estat</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Public</td>
-                        <td>Explorador (NTFS/SMB)</td>
-                        <td>Tothom (Modificació)</td>
+                        <td>📂 Public</td>
+                        <td>Explorador de fitxers</td>
+                        <td class="status">Actiu</td>
                     </tr>
                     <tr>
-                        <td>Operacions</td>
+                        <td>📂 Operacions</td>
                         <td>Server Manager (ABE)</td>
-                        <td>Grup Transport</td>
+                        <td class="status">Actiu</td>
                     </tr>
                     <tr>
-                        <td>Confidencial</td>
+                        <td>📂 Confidencial</td>
                         <td>PowerShell Avançat</td>
-                        <td>Grup Direccio (Z:)</td>
+                        <td class="status">Actiu</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <section id="fita3" class="card">
-            <h3><span class="icon">📊</span> Control d'Emmagatzematge</h3>
-            <div class="alert">
-                <strong>FSRM Actiu:</strong> Hard Quota de 200MB a la carpeta Public amb avís personalitzat al 90%.
-            </div>
-            <p>Bloqueig actiu de fitxers executables (.exe, .msi) i multimèdia a la carpeta d'Operacions.</p>
+        <section class="card">
+            <h2>03. Control d'Espai (FSRM)</h2>
+            <p>Per evitar l'ús abusiu del disc, s'han establert els següents límits:</p>
+            <ul>
+                <li><strong>Quotes NTFS:</strong> 500 MB per usuari.</li>
+                <li><strong>Quota de Carpeta:</strong> 200 MB Hard Quota en "Public".</li>
+                <li><strong>Filtratge:</strong> Bloqueig automàtic d'arxius .exe i multimèdia.</li>
+            </ul>
         </section>
-    </main>
+
+    </div>
+
 </body>
 </html>
