@@ -3,59 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLogistíc | Futur i Logística</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <title>T03: Servidor de Fitxers | FoodLogistic</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="background-overlay"></div>
-
-    <nav class="navbar">
-        <img src="FoodLogisticLogo.png" alt="Logo" class="nav-logo">
-        <ul class="nav-links">
-            <li><a href="#">Inici</a></li>
-            <li><a href="#">Serveis</a></li>
-            <li><a href="#">Innovació</a></li>
-            <li><a href="#" class="btn-contact">Contacte</a></li>
+    <nav class="sidebar">
+        <div class="logo">
+            <h2>Food<span>Logistic</span></h2>
+        </div>
+        <ul>
+            <li><a href="#intro">Introducció</a></li>
+            <li><a href="#fita1">1. Seguretat AD</a></li>
+            <li><a href="#fita2">2. Recursos SMB</a></li>
+            <li><a href="#fita3">3. Control FSRM</a></li>
+            <li><a href="#fita4">4. Verificació</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <span class="badge">Evolució Logística 2026</span>
-            <h1>L'art de moure <br> <span class="accent">el món.</span></h1>
-            <p>Fusionem la tecnologia quàntica amb la logística tradicional per a una distribució sense fronteres.</p>
-            <div class="cta-group">
-                <a href="#" class="btn-primary">Explora els Protocols</a>
-                <a href="#" class="btn-secondary">Veure el Vídeo</a>
-            </div>
-        </div>
-        <div class="hero-image-container">
-            <img src="FoodLogisticLogo.png" alt="FoodLogistic Principal" class="hero-img-main">
-        </div>
-    </header>
+    <main class="content">
+        <header>
+            <h1>T03: Implementació de Servidor de Fitxers</h1>
+            <p class="subtitle">Consultoria d'infraestructura segura i organitzada</p>
+        </header>
 
-    <section class="features">
-        <div class="card">
-            <div class="card-glass">
-                <h3>01. Inteligència</h3>
-                <p>Algorismes predictius per a rutes òptimes.</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-glass">
-                <h3>02. Sostenibilitat</h3>
-                <p>Emissions zero en cada quilòmetre.</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-glass">
-                <h3>03. Seguretat</h3>
-                <p>Monitoratge biomètric de la càrrega.</p>
-            </div>
-        </div>
-    </section>
+        <section id="intro" class="card">
+            <h3><span class="icon">🚀</span> Introducció</h3>
+            <p>Davant el creixement de <strong>FoodLogistic</strong>, s'implementa una solució centralitzada per evitar la compartimentació de dades. L'objectiu és una infraestructura segura basada en Windows Server amb controls NTFS, SMB i FSRM.</p>
+        </section>
 
+        <section id="fita1" class="card">
+            <h3><span class="icon">🛡️</span> Preparació Active Directory</h3>
+            <p>Configuració del domini <code>foodlogistic.test</code> amb Unitats Organitzatives (OU) i grups de seguretat:</p>
+            <div class="grid">
+                <div class="tag">Administracio</div>
+                <div class="tag">Transport</div>
+                <div class="tag">Direccio</div>
+            </div>
+        </section>
+
+        <section id="fita2" class="card">
+            <h3><span class="icon">📂</span> Recursos Compartits</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Carpeta</th>
+                        <th>Mètode</th>
+                        <th>Accés</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Public</td>
+                        <td>Explorador (NTFS/SMB)</td>
+                        <td>Tothom (Modificació)</td>
+                    </tr>
+                    <tr>
+                        <td>Operacions</td>
+                        <td>Server Manager (ABE)</td>
+                        <td>Grup Transport</td>
+                    </tr>
+                    <tr>
+                        <td>Confidencial</td>
+                        <td>PowerShell Avançat</td>
+                        <td>Grup Direccio (Z:)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="fita3" class="card">
+            <h3><span class="icon">📊</span> Control d'Emmagatzematge</h3>
+            <div class="alert">
+                <strong>FSRM Actiu:</strong> Hard Quota de 200MB a la carpeta Public amb avís personalitzat al 90%.
+            </div>
+            <p>Bloqueig actiu de fitxers executables (.exe, .msi) i multimèdia a la carpeta d'Operacions.</p>
+        </section>
+    </main>
 </body>
 </html>
