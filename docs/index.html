@@ -5,30 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodLogístic S.A. | Operació Escut Digital</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="cookie-banner" class="cookie-notification">
-        <div class="cookie-content">
-            <span class="cookie-icon">🍪</span>
-            <p>Utilitzem cookies per a la millora de la teva experiència logística. <a href="#cookies">Més info</a>.</p>
-            <button onclick="closeCookies()" class="btn-cookie-accept">D'acord</button>
+    <div id="cookie-banner" class="cookie-overlay">
+        <div class="cookie-card">
+            <p>Aquesta web utilitza cookies per millorar la teva ruta logística. <a href="#cookies">Més info</a>.</p>
+            <button onclick="closeCookies()">ACCEPTAR</button>
         </div>
     </div>
 
-    <header class="header-main">
-        <div class="container-header">
-            <nav class="nav-side nav-left">
+    <header class="navbar">
+        <div class="nav-content">
+            <nav class="links-left">
                 <a href="#serveis">SERVEIS</a>
             </nav>
-            
-            <div class="brand-center">
-                <img src="docs/FoodLogisticLogo.png" alt="Logo FoodLogístic" class="logo-inline">
-                <h1 class="title-brand">FOODLOGÍSTIC <span>S.A.</span></h1>
+
+            <div class="center-brand">
+                <img src="docs/FoodLogisticLogo.png" alt="Logo" class="nav-logo">
+                <span class="brand-name">FOODLOGÍSTIC <span class="sa">S.A.</span></span>
             </div>
 
-            <nav class="nav-side nav-right">
+            <nav class="links-right">
                 <a href="#contacte">CONTACTE</a>
             </nav>
         </div>
@@ -36,85 +35,83 @@
 
     <main>
         <section class="hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-body">
-                <h2 class="hero-title">OPERACIÓ ESCUT DIGITAL</h2>
-                <div class="status-badge">100% LEGAL & COMPLIANT</div>
-                <p class="hero-subtitle">Transformant la logística alimentària amb seguretat total i transparència jurídica.</p>
-                <a href="#serveis" class="btn-hero">EXPLORAR SERVEIS</a>
+            <div class="hero-bg"></div>
+            <div class="hero-text">
+                <h1 class="main-title">OPERACIÓ ESCUT DIGITAL</h1>
+                <div class="badge">100% LEGAL & SECURE</div>
+                <p>Logística d'aliments amb la màxima transparència jurídica i seguretat digital.</p>
+                <a href="#contacte" class="cta-button">DEMANAR AUDITORIA</a>
             </div>
         </section>
 
-        <section id="serveis" class="services-grid">
-            <div class="card">
-                <div class="card-line"></div>
-                <h3>DRETS ARSLOP</h3>
-                <p>Gestió total de l'Accés, Rectificació, Supressió, Limitació, Oposició i Portabilitat.</p>
+        <section id="serveis" class="features">
+            <div class="feature-card">
+                <h3>ARSLOP</h3>
+                <p>Gestió de drets d'accés, rectificació i supressió de dades.</p>
             </div>
-            <div class="card">
-                <div class="card-line"></div>
-                <h3>LSSI-CE COMPLIANCE</h3>
-                <p>Adaptació de textos legals i política de cookies per a entorns web industrials.</p>
+            <div class="feature-card">
+                <h3>LSSI-CE</h3>
+                <p>Textos legals i avisos adaptats a la normativa europea.</p>
             </div>
-            <div class="card">
-                <div class="card-line"></div>
-                <h3>SEGURETAT DADES</h3>
-                <p>Blindatge de dades de tercers i protocols de seguretat en la cadena logística.</p>
+            <div class="feature-card">
+                <h3>COOKIES</h3>
+                <p>Consentiment informat i control total de rastrejadors.</p>
             </div>
         </section>
 
         <section id="contacte" class="contact-section">
-            <div class="contact-box">
-                <h3>CONTACTE PROFESSIONAL</h3>
-                <form id="contact-form">
-                    <div class="form-inputs">
+            <div class="form-container">
+                <h2>CONTACTE PROFESSIONAL</h2>
+                <form>
+                    <div class="input-grid">
                         <input type="text" placeholder="Nom complet" required>
-                        <input type="email" placeholder="Correu corporatiu" required>
+                        <input type="email" placeholder="Email corporatiu" required>
                         <input type="tel" placeholder="Telèfon" required>
                     </div>
-                    <textarea placeholder="Missatge o consulta legal..." rows="4"></textarea>
+                    <textarea placeholder="Missatge..." rows="4" required></textarea>
 
-                    <div class="form-legal">
-                        <label class="check-container">
+                    <div class="legal-checks">
+                        <label class="check-item">
                             <input type="checkbox" required>
-                            <span class="checkmark"></span>
-                            Accepto la <a href="#privacitat">Política de Privacitat</a> (Obligatori)
+                            <span class="box"></span>
+                            Accepto la <a href="#privacitat">Política de Privacitat</a>.
                         </label>
-                        <label class="check-container">
+                        <label class="check-item">
                             <input type="checkbox">
-                            <span class="checkmark"></span>
-                            Autoritzo comunicacions segons l'<a href="#avis-legal">Avís Legal</a>
+                            <span class="box"></span>
+                            Vull rebre avisos legals segons l'<a href="#avis-legal">Avís Legal</a>.
                         </label>
                     </div>
 
-                    <button type="submit" class="btn-send">ENVIAR SOL·LICITUD</button>
+                    <button type="submit" class="submit-btn">ENVIAR SOL·LICITUD</button>
                 </form>
             </div>
         </section>
 
-        <section class="legal-footer">
-            <div id="avis-legal">
+        <section class="legal-info">
+            <div class="legal-item" id="avis-legal">
                 <h4>Avís Legal</h4>
-                <p>FoodLogístic S.A. | NIF: A60000000 | Adreça: Polígon Ind. Sector 2, Barcelona. Responsable segons Llei 34/2002.</p>
+                <p>FoodLogístic S.A. | NIF: A60000000 | Carrer de la Logística s/n, Barcelona.</p>
             </div>
-            <div id="privacitat">
-                <h4>Política de Privacitat</h4>
-                <p>Dades tractades amb finalitats logístiques. Pots exercir drets ARSLOP a: legal@foodlogistic.sa</p>
+            <div class="legal-item" id="privacitat">
+                <h4>Privacitat</h4>
+                <p>Dades tractades sota el Reglament (UE) 2016/679. Drets ARSLOP a: dades@foodlogistic.sa</p>
             </div>
-            <div id="cookies">
-                <h4>Política de Cookies</h4>
-                <p>Cookies tècniques i analítiques. Durada de sessió: 12 mesos.</p>
+            <div class="legal-item" id="cookies">
+                <h4>Cookies</h4>
+                <p>Aquesta web fa servir cookies tècniques i analítiques de 12 mesos de durada.</p>
             </div>
         </section>
     </main>
 
-    <footer class="footer-bottom">
-        <p>&copy; 2026 FOODLOGÍSTIC S.A. — Excel·lència en Logística i Seguretat</p>
+    <footer>
+        <p>&copy; 2026 FoodLogístic S.A. | Qualitat i Llei a cada entrega.</p>
     </footer>
 
     <script>
         function closeCookies() {
-            document.getElementById('cookie-banner').style.transform = 'translateY(150%)';
+            document.getElementById('cookie-banner').style.opacity = '0';
+            setTimeout(() => { document.getElementById('cookie-banner').style.display = 'none'; }, 500);
         }
     </script>
 </body>
