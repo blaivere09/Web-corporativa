@@ -3,215 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLogistic S.A. | Informe T03</title>
-    <style>
-        /* CSS INTEGRAT PER EVITAR ERRORS DE CÀRREGA */
-        :root {
-            --blau-logo: #1a5c8e;
-            --verd-logo: #2ecc71;
-            --gris-clar: #f4f7f6;
-            --blanc: #ffffff;
-            --text: #333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--gris-clar);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* --- PORTADA (HERO SECTION) --- */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--blau-logo) 0%, #103a5a 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--blanc);
-            padding: 20px;
-        }
-
-        .hero img {
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 2rem;
-            /* Això fa que el logo es vegi blanc si el fons és fosc */
-            filter: brightness(0) invert(1);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-bottom: 2rem;
-        }
-
-        .btn-start {
-            background-color: var(--verd-logo);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-start:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        /* --- CONTINGUT TÈCNIC --- */
-        .container {
-            max-width: 1000px;
-            margin: -50px auto 50px;
-            padding: 20px;
-        }
-
-        .card {
-            background: var(--blanc);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            color: var(--blau-logo);
-            border-bottom: 3px solid var(--verd-logo);
-            display: inline-block;
-            margin-bottom: 20px;
-            padding-bottom: 5px;
-        }
-
-        .grid-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .info-box {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid var(--blau-logo);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th {
-            background: var(--blau-logo);
-            color: white;
-            padding: 12px;
-            text-align: left;
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .status {
-            font-weight: bold;
-            color: var(--verd-logo);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .container { margin-top: 20px; }
-        }
-    </style>
+    <title>FoodLogístic S.A.</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <section class="hero">
-        <img src="FoodLogisticLogo.png" alt="FoodLogistic Logo">
-        <h1>Servidor de Fitxers Segur</h1>
-        <p>Projecte T03 - Gestió de Dades i Infraestructura</p>
-        <a href="#detalls" class="btn-start">Veure Informe Tècnic</a>
-    </section>
+<header>
+    <div class="logo">FoodLogístic S.A.</div>
+    <nav>
+        <a href="#serveis">Serveis</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#contacte">Contacte</a>
+        <a href="avis-legal.html">Avís legal</a>
+        <a href="privacitat.html">Privacitat</a>
+        <a href="cookies.html">Cookies</a>
+    </nav>
+</header>
 
-    <div class="container" id="detalls">
-        
-        <section class="card">
-            <h2>01. Seguretat AD</h2>
-            <p>S'ha configurat l'estructura de dominis a <strong>foodlogistic.test</strong> per organitzar els departaments i protegir la informació segons el rol de l'usuari.</p>
-            <div class="grid-info">
-                <div class="info-box">
-                    <strong>Administració</strong>
-                    <p>Factures i albarans.</p>
-                </div>
-                <div class="info-box">
-                    <strong>Transport</strong>
-                    <p>Logística i xofers.</p>
-                </div>
-                <div class="info-box">
-                    <strong>Direcció</strong>
-                    <p>Gerència i confidencial.</p>
-                </div>
-            </div>
-        </section>
+<section class="hero">
+    <h1>Logística alimentària segura i eficient</h1>
+    <p>Distribució moderna amb garantia de qualitat i traçabilitat total</p>
+    <a class="btn" href="#contacte">Contacta'ns</a>
+</section>
 
-        <section class="card">
-            <h2>02. Recursos Compartits</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Recurs</th>
-                        <th>Mètode</th>
-                        <th>Estat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>📂 Public</td>
-                        <td>Explorador de fitxers</td>
-                        <td class="status">Actiu</td>
-                    </tr>
-                    <tr>
-                        <td>📂 Operacions</td>
-                        <td>Server Manager (ABE)</td>
-                        <td class="status">Actiu</td>
-                    </tr>
-                    <tr>
-                        <td>📂 Confidencial</td>
-                        <td>PowerShell Avançat</td>
-                        <td class="status">Actiu</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section class="card">
-            <h2>03. Control d'Espai (FSRM)</h2>
-            <p>Per evitar l'ús abusiu del disc, s'han establert els següents límits:</p>
-            <ul>
-                <li><strong>Quotes NTFS:</strong> 500 MB per usuari.</li>
-                <li><strong>Quota de Carpeta:</strong> 200 MB Hard Quota en "Public".</li>
-                <li><strong>Filtratge:</strong> Bloqueig automàtic d'arxius .exe i multimèdia.</li>
-            </ul>
-        </section>
-
+<section id="serveis" class="section">
+    <h2>Els nostres serveis</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Transport refrigerat</h3>
+            <p>Manteniment de cadena de fred garantida.</p>
+        </div>
+        <div class="card">
+            <h3>Distribució nacional</h3>
+            <p>Arribem a tot el territori amb eficiència.</p>
+        </div>
+        <div class="card">
+            <h3>Gestió logística</h3>
+            <p>Control total de la cadena de subministrament.</p>
+        </div>
     </div>
+</section>
+
+<section id="empresa" class="section dark">
+    <h2>Sobre FoodLogístic S.A.</h2>
+    <p>
+        Som una empresa especialitzada en logística alimentària amb compromís amb la qualitat,
+        la seguretat i el compliment normatiu europeu.
+    </p>
+</section>
+
+<section id="contacte" class="section">
+    <h2>Contacte</h2>
+
+    <form>
+        <input type="text" placeholder="Nom complet" required>
+        <input type="email" placeholder="Correu electrònic" required>
+        <input type="tel" placeholder="Telèfon" required>
+        <textarea placeholder="Missatge" required></textarea>
+
+        <div class="checkbox">
+            <input type="checkbox" id="privacitat" required>
+            <label for="privacitat">
+                Accepto la <a href="privacitat.html">política de privacitat</a>
+            </label>
+        </div>
+
+        <div class="checkbox">
+            <input type="checkbox" id="comunicacions">
+            <label for="comunicacions">
+                Vull rebre comunicacions comercials (veure <a href="avis-legal.html">avís legal</a>)
+            </label>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 FoodLogístic S.A. - Tots els drets reservats</p>
+</footer>
+
+<!-- Banner cookies -->
+<div class="cookies-banner">
+    <p>Utilitzem cookies per millorar l'experiència. En continuar navegant acceptes la política de cookies.</p>
+    <button>Acceptar</button>
+</div>
 
 </body>
 </html>
