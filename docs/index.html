@@ -9,120 +9,112 @@
 </head>
 <body>
 
-    <div id="cookie-banner" class="cookie-box">
-        <div class="cookie-icon">🍪</div>
-        <div class="cookie-text">
-            <p><strong>Privacitat Digital:</strong> Fem servir cookies per optimitzar la teva ruta logística. <a href="#cookies">Configurar</a>.</p>
-        </div>
-        <div class="cookie-btns">
-            <button onclick="closeCookies()" class="accept">D'acord</button>
+    <div id="cookie-banner" class="cookie-notification">
+        <div class="cookie-content">
+            <span class="cookie-icon">🍪</span>
+            <p>Utilitzem cookies per a la millora de la teva experiència logística. <a href="#cookies">Més info</a>.</p>
+            <button onclick="closeCookies()" class="btn-cookie-accept">D'acord</button>
         </div>
     </div>
 
-    <header class="main-header">
-        <div class="header-inner">
-            <nav class="nav-left">
-                <a href="#serveis">Serveis</a>
+    <header class="header-main">
+        <div class="container-header">
+            <nav class="nav-side nav-left">
+                <a href="#serveis">SERVEIS</a>
             </nav>
             
-            <div class="brand-central">
-                <img src="docs/FoodLogisticLogo.png" alt="Logo FoodLogístic" class="main-logo">
-                <h1>FoodLogístic <span>S.A.</span></h1>
+            <div class="brand-center">
+                <img src="docs/FoodLogisticLogo.png" alt="Logo FoodLogístic" class="logo-inline">
+                <h1 class="title-brand">FOODLOGÍSTIC <span>S.A.</span></h1>
             </div>
 
-            <nav class="nav-right">
-                <a href="#contacte">Contacte</a>
+            <nav class="nav-side nav-right">
+                <a href="#contacte">CONTACTE</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero-section">
-            <div class="hero-image-overlay"></div>
-            <div class="hero-text-content">
-                <h2 class="reveal-text">Operació Escut Digital</h2>
-                <div class="badge">100% LEGAL & COMPLIANT</div>
-                <p>Transformant la logística alimentària amb seguretat total i transparència jurídica.</p>
-                <div class="hero-actions">
-                    <a href="#serveis" class="btn-primary">Explorar Serveis</a>
-                </div>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-body">
+                <h2 class="hero-title">OPERACIÓ ESCUT DIGITAL</h2>
+                <div class="status-badge">100% LEGAL & COMPLIANT</div>
+                <p class="hero-subtitle">Transformant la logística alimentària amb seguretat total i transparència jurídica.</p>
+                <a href="#serveis" class="btn-hero">EXPLORAR SERVEIS</a>
             </div>
         </section>
 
-        <section id="serveis" class="glass-section">
-            <div class="grid-container">
-                <div class="glass-card">
-                    <div class="card-num">01</div>
-                    <h3>ARSLOP Ready</h3>
-                    <p>Accés, Rectificació, Supressió, Limitació, Oposició i Portabilitat totalment garantits.</p>
-                </div>
-                <div class="glass-card">
-                    <div class="card-num">02</div>
-                    <h3>LSSI-CE</h3>
-                    <p>Adaptació completa de l'avís legal i la gestió de cookies per a empreses d'alimentació.</p>
-                </div>
-                <div class="glass-card">
-                    <div class="card-num">03</div>
-                    <h3>Seguretat 360º</h3>
-                    <p>Mesures tècniques i organitzatives per blindar les dades dels nostres clients.</p>
-                </div>
+        <section id="serveis" class="services-grid">
+            <div class="card">
+                <div class="card-line"></div>
+                <h3>DRETS ARSLOP</h3>
+                <p>Gestió total de l'Accés, Rectificació, Supressió, Limitació, Oposició i Portabilitat.</p>
+            </div>
+            <div class="card">
+                <div class="card-line"></div>
+                <h3>LSSI-CE COMPLIANCE</h3>
+                <p>Adaptació de textos legals i política de cookies per a entorns web industrials.</p>
+            </div>
+            <div class="card">
+                <div class="card-line"></div>
+                <h3>SEGURETAT DADES</h3>
+                <p>Blindatge de dades de tercers i protocols de seguretat en la cadena logística.</p>
             </div>
         </section>
 
-        <section id="contacte" class="contact-visual">
-            <div class="contact-card">
-                <h3>Vols fer la teva web legal?</h3>
-                <p>Deixa les teves dades i el nostre equip tècnic es posarà en contacte.</p>
-                
-                <form id="food-form">
-                    <div class="form-grid">
-                        <input type="text" placeholder="El teu nom" required>
-                        <input type="email" placeholder="Email corporatiu" required>
-                        <input type="tel" placeholder="Telèfon de contacte" required>
+        <section id="contacte" class="contact-section">
+            <div class="contact-box">
+                <h3>CONTACTE PROFESSIONAL</h3>
+                <form id="contact-form">
+                    <div class="form-inputs">
+                        <input type="text" placeholder="Nom complet" required>
+                        <input type="email" placeholder="Correu corporatiu" required>
+                        <input type="tel" placeholder="Telèfon" required>
                     </div>
-                    <textarea placeholder="Explica'ns el teu projecte..." rows="4"></textarea>
+                    <textarea placeholder="Missatge o consulta legal..." rows="4"></textarea>
 
-                    <div class="check-wrapper">
-                        <label class="modern-check">
+                    <div class="form-legal">
+                        <label class="check-container">
                             <input type="checkbox" required>
-                            <span class="custom-box"></span>
+                            <span class="checkmark"></span>
                             Accepto la <a href="#privacitat">Política de Privacitat</a> (Obligatori)
                         </label>
-                        <label class="modern-check">
+                        <label class="check-container">
                             <input type="checkbox">
-                            <span class="custom-box"></span>
-                            Vull rebre novetats legals segons l'<a href="#avis-legal">Avís Legal</a>
+                            <span class="checkmark"></span>
+                            Autoritzo comunicacions segons l'<a href="#avis-legal">Avís Legal</a>
                         </label>
                     </div>
 
-                    <button type="submit" class="send-btn">Enviar Sol·licitud</button>
+                    <button type="submit" class="btn-send">ENVIAR SOL·LICITUD</button>
                 </form>
             </div>
         </section>
 
-        <section class="legal-archive">
-            <details id="avis-legal">
-                <summary>Avís Legal</summary>
-                <div class="content">FoodLogístic S.A. | NIF: A60000000 | Responsable del tractament segons Llei 34/2002.</div>
-            </details>
-            <details id="privacitat">
-                <summary>Política de Privacitat (Drets ARSLOP)</summary>
-                <div class="content">Pots exercir els teus drets enviant un correu a legal@foodlogistic.sa amb una còpia del teu DNI.</div>
-            </details>
-            <details id="cookies">
-                <summary>Política de Cookies</summary>
-                <div class="content">Utilitzem cookies pròpies per millorar la traçabilitat de la teva experiència. Durada: 1 any.</div>
-            </details>
+        <section class="legal-footer">
+            <div id="avis-legal">
+                <h4>Avís Legal</h4>
+                <p>FoodLogístic S.A. | NIF: A60000000 | Adreça: Polígon Ind. Sector 2, Barcelona. Responsable segons Llei 34/2002.</p>
+            </div>
+            <div id="privacitat">
+                <h4>Política de Privacitat</h4>
+                <p>Dades tractades amb finalitats logístiques. Pots exercir drets ARSLOP a: legal@foodlogistic.sa</p>
+            </div>
+            <div id="cookies">
+                <h4>Política de Cookies</h4>
+                <p>Cookies tècniques i analítiques. Durada de sessió: 12 mesos.</p>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>FoodLogístic S.A. &copy; 2026 — Intel·ligència Logística i Seguretat Digital</p>
+    <footer class="footer-bottom">
+        <p>&copy; 2026 FOODLOGÍSTIC S.A. — Excel·lència en Logística i Seguretat</p>
     </footer>
 
     <script>
         function closeCookies() {
-            document.getElementById('cookie-banner').classList.add('hide');
+            document.getElementById('cookie-banner').style.transform = 'translateY(150%)';
         }
     </script>
 </body>
