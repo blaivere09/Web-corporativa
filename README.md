@@ -5,7 +5,7 @@ Aquesta és la web corporativa de [Nom de l'Empresa], una empresa fictícia dedi
 
 ## Demostració
 
-[🌐 URL de la web](https://[usuari].github.io/[nom-del-repositori])
+[🌐 URL de la web](https://blaivere09.github.io/Web-corporativa/)
 
 ## Tecnologies Utilitzades
 
