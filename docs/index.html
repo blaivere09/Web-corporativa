@@ -4,364 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodLogístic S.A. | Solucions Logístiques Professionals</title>
+    
+    <!-- Connexió amb el fitxer CSS extern -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font de Google per a un look professional -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        /* VARIABLES I ESTILS GENERALS */
-        :root {
-            --blau-corporatiu: #1a4a7a;
-            --verd-corporatiu: #4CAF50;
-            --blanc: #ffffff;
-            --gris-clar: #f4f4f4;
-            --negre: #333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        body {
-            background-color: var(--blanc);
-            color: var(--negre);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* HEADER I NAVEGACIÓ */
-        header {
-            background: var(--blanc);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo-container img {
-            height: 60px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-container img:hover {
-            transform: scale(1.05);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--blau-corporatiu);
-            margin-left: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--verd-corporatiu);
-        }
-
-        /* SECCIÓ HERO */
-        .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(26, 74, 122, 0.8), rgba(26, 74, 122, 0.8)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80') center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s ease;
-        }
-
-        /* SECCIONS DE CONTINGUT */
-        section {
-            padding: 4rem 10%;
-        }
-
-        .grid-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: var(--gris-clar);
-            padding: 2rem;
-            border-radius: 10px;
-            border-bottom: 5px solid var(--blau-corporatiu);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        /* FORMULARI INTERACTIU */
-        .contact-container {
-            background: var(--blau-corporatiu);
-            color: white;
-            border-radius: 15px;
-            padding: 3rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 5px;
-            margin-top: 0.5rem;
-        }
-
-        button {
-            background: var(--verd-corporatiu);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-            width: 100%;
-        }
-
-        button:hover {
-            background: #45a049;
-            transform: scale(1.02);
-        }
-
-        /* PEU DE PÀGINA */
-        footer {
-            background: #222;
-            color: #ccc;
-            padding: 3rem 10% 1rem;
-            font-size: 0.8rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        /* COOKIES */
-        #cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.9);
-            color: white;
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2000;
-            font-size: 0.9rem;
-        }
-
-        #cookie-banner button {
-            width: auto;
-            margin-left: 20px;
-        }
-
-        /* ANIMACIONS */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            header { flex-direction: column; }
-            nav { margin-top: 1rem; }
-            .hero h1 { font-size: 2rem; }
-        }
-    </style>
 </head>
 <body>
 
-    <!-- BANNER DE COOKIES -->
-    <div id="cookie-banner">
-        <p>Utilitzem cookies pròpies i de tercers per millorar la vostra experiència a FoodLogístic S.A. En continuar navegant, n'accepteu l'ús. <a href="#" style="color: var(--verd-corporatiu);">Més informació</a>.</p>
-        <button onclick="acceptCookies()">Acceptar</button>
+    <!-- BANNER DE COOKIES INTERACTIU -->
+    <div id="cookieBox" class="cookie-banner">
+        <div class="cookie-content">
+            <p>
+                Aquesta web de <strong>FoodLogístic S.A.</strong> utilitza cookies pròpies i de tercers per millorar la seva experiència. 
+                Consulteu la nostra <a href="legal/cookies.html">Política de Cookies</a> i la nostra 
+                <a href="legal/privacitat.html">Política de Privacitat</a>.
+            </p>
+            <button onclick="acceptarCookies()">Acceptar totes</button>
+        </div>
     </div>
 
-    <!-- NAVEGACIÓ -->
+    <!-- CAPÇALERA / NAV -->
     <header>
-        <div class="logo-container">
-            <!-- Referència al teu fitxer del GitHub -->
+        <div class="logo">
             <img src="FoodLogisticLogo.png" alt="Logo FoodLogístic S.A.">
         </div>
         <nav>
             <a href="#empresa">L'Empresa</a>
             <a href="#serveis">Serveis</a>
-            <a href="#contacte">Contacte</a>
+            <a href="#contacte" class="btn-nav">Contacte</a>
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- SECCIÓ HERO (BENVINGUDA) -->
     <section class="hero">
-        <h1>Excel·lència en Logística Alimentària</h1>
-        <p>Conectant productors amb el món des de Mataró.</p>
+        <h1>FoodLogístic S.A.</h1>
+        <p>Líders en logística alimentària amb més de 25 milions d'euros de facturació anual.</p>
+        <a href="#contacte" style="text-decoration:none;"><button>Sol·licitar Pressupost</button></a>
     </section>
 
-    <!-- INFO CORPORATIVA -->
-    <section id="empresa">
-        <h2 style="text-align: center; color: var(--blau-corporatiu); margin-bottom: 2rem;">Sobre Nosaltres</h2>
-        <div class="grid-info">
+    <!-- SECCIÓ EMPRESA -->
+    <section id="empresa" class="container">
+        <h2 style="text-align: center; color: #1a4a7a; margin-bottom: 40px;">Excel·lència Logística a Mataró</h2>
+        <div class="grid">
             <div class="card">
-                <h3>El Nostre Equip</h3>
-                <p>Comptem amb un equip professional de 35 treballadors altament qualificats per gestionar la seva càrrega amb la màxima cura.</p>
+                <h3>Solvència</h3>
+                <p>Empresa consolidada amb una facturació anual de 25 milions d'euros, garantint la màxima estabilitat.</p>
             </div>
             <div class="card">
-                <h3>Potència Econòmica</h3>
-                <p>Amb una facturació anual de 25 milions d'euros, garantim la solvència i estabilitat que el seu negoci necessita.</p>
+                <h3>Equip Expert</h3>
+                <p>Comptem amb 35 treballadors especialitzats en la gestió i distribució de productes alimentaris.</p>
             </div>
             <div class="card">
-                <h3>Ubicació Estratègica</h3>
-                <p>Situats a Mataró, centre neuràlgic de la teixidora industrial de Barcelona.</p>
+                <h3>Ubicació</h3>
+                <p>Seu central al Carrer de la Teixidora, núm. 13, Mataró. Connexió directa amb les principals rutes.</p>
             </div>
         </div>
     </section>
 
-    <!-- FORMULARI D'INTERACCIÓ -->
-    <section id="contacte" style="background-color: var(--gris-clar);">
-        <div class="contact-container">
-            <h2 style="margin-bottom: 1rem; text-align: center;">Contacti amb els nostres experts</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">Envieu-nos les vostres dades i ens posarem en contacte en menys de 24 hores.</p>
+    <!-- SECCIÓ CONTACTE I FORMULARI -->
+    <section id="contacte" class="form-section">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Contacti amb nosaltres</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Envieu-nos les vostres dades i un consultor logístic us atendrà.</p>
             
-            <form id="contactForm">
-                <div class="form-group">
-                    <label>Nom de l'Empresa</label>
-                    <input type="text" id="nom" placeholder="Ex: Alimentació Express" required>
-                </div>
-                <div class="form-group">
-                    <label>Correu Electrònic Corporatiu</label>
-                    <input type="email" id="email" placeholder="correu@empresa.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Missatge / Necessitats logístiques</label>
-                    <textarea id="missatge" rows="4" placeholder="Expliqui'ns breument què necessita..."></textarea>
-                </div>
-                <button type="submit">Enviar Sol·licitud</button>
+            <form id="formContacte">
+                <label for="nom">Nom de l'empresa / Particular</label>
+                <input type="text" id="nom" name="nom" placeholder="Ex: Food Services S.L." required>
+
+                <label for="email">Correu electrònic corporatiu</label>
+                <input type="email" id="email" name="email" placeholder="correu@empresa.com" required>
+
+                <label for="missatge">Com us podem ajudar?</label>
+                <textarea id="missatge" name="missatge" rows="5" placeholder="Descrigui les seves necessitats logístiques..."></textarea>
+
+                <button type="submit">Enviar Missatge</button>
             </form>
-            <div id="successMsg" style="display:none; color: var(--verd-corporatiu); text-align: center; margin-top: 1rem; font-weight: bold;">
-                Gràcies! Hem rebut la seva informació correctament.
-            </div>
         </div>
     </section>
 
-    <!-- FOOTER AMB DADES LEGALS -->
+    <!-- PEU DE PÀGINA AMB DADES LEGALS REQUERIDES -->
     <footer>
-        <div class="footer-grid">
-            <div>
-                <h4>FoodLogístic S.A.</h4>
-                <p>Dinamisme i eficiència en el transport.</p>
-            </div>
-            <div>
-                <h4>Contacte</h4>
-                <p>📞 +34 935 55 55 55</p>
-                <p>📧 info@foodlogistic.com</p>
-            </div>
-            <div>
-                <h4>Dades Legals</h4>
+        <div class="footer-content" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 40px 10%;">
+            <div class="footer-info">
+                <h4>Denominació Social</h4>
+                <p>FoodLogistic S.A.</p>
                 <p>NIF: A08123456</p>
+            </div>
+            <div class="footer-info">
+                <h4>Domicili Social</h4>
                 <p>Carrer de la Teixidora, núm. 13</p>
                 <p>08302 Mataró (Barcelona)</p>
             </div>
+            <div class="footer-info">
+                <h4>Inscripció Registral</h4>
+                <p>Registre Mercantil de Barcelona</p>
+                <p>Tom 45678, Foli 120, Full B-567890</p>
+            </div>
+            <div class="footer-info">
+                <h4>Contacte</h4>
+                <p>Tel: +34 935 55 55 55</p>
+                <p>Email: info@foodlogistic.com</p>
+            </div>
         </div>
-        <hr style="border: 0; border-top: 1px solid #444; margin-bottom: 1rem;">
-        <p style="text-align: center;">© 2024 FoodLogístic S.A. - Inscrita al Registre Mercantil de Barcelona, Tom 45678, Foli 120, Full B-567890.</p>
+        <div style="text-align: center; padding: 20px; border-top: 1px solid #444; font-size: 0.8rem;">
+            <p>&copy; 2026 FoodLogístic S.A. | <a href="legal/privacitat.html" style="color:#ccc;">Privacitat</a> | <a href="legal/cookies.html" style="color:#ccc;">Cookies</a></p>
+        </div>
     </footer>
 
-    <script>
-        // Funció per acceptar cookies
-        function acceptCookies() {
-            document.getElementById('cookie-banner').style.display = 'none';
-            localStorage.setItem('cookiesAcceptades', 'true');
-        }
-
-        // Comprovar si ja s'han acceptat les cookies
-        window.onload = function() {
-            if(localStorage.getItem('cookiesAcceptades') === 'true') {
-                document.getElementById('cookie-banner').style.display = 'none';
-            }
-        }
-
-        // Gestió del formulari
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Animació simple d'enviament
-            const btn = this.querySelector('button');
-            btn.innerText = 'Enviant...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                this.style.display = 'none';
-                document.getElementById('successMsg').style.display = 'block';
-                
-                // Simulem el registre en consola de les dades enviades
-                console.log("Dades enviades:", {
-                    nom: document.getElementById('nom').value,
-                    email: document.getElementById('email').value,
-                    missatge: document.getElementById('missatge').value
-                });
-            }, 1500);
-        });
-    </script>
+    <!-- Connexió amb el fitxer JavaScript extern -->
+    <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Dins del <head> -->
-<link rel="stylesheet" href="css/style.css">
-
-<!-- Abans de tancar el </body> -->
-<script src="js/script.js"></script>
-
-<!-- Estructura del banner de cookies per al JS -->
-<div id="cookieBox" class="cookie-banner">
-    <p>Aquesta web de FoodLogístic S.A. utilitza cookies per millorar la seva experiència.</p>
-    <button onclick="acceptarCookies()">D'acord</button>
-</div>
-
-<!-- Contingut Legal (Peu de pàgina) -->
-<footer>
-    <div class="legal-info">
-        <p><strong>Denominació Social:</strong> FoodLogistic S.A.</p>
-        <p><strong>NIF:</strong> A08123456</p>
-        <p><strong>Domicili:</strong> Carrer de la Teixidora, núm. 13, 08302 Mataró (Barcelona)</p>
-        <p><strong>Registre:</strong> Inscrita al Registre Mercantil de Barcelona, Tom 45678, Foli 120, Full B-567890, Inscripció 1a.</p>
-        <p><strong>Contacte:</strong> +34 935 55 55 55 | info@foodlogistic.com</p>
-    </div>
-</footer>
