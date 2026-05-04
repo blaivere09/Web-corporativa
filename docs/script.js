@@ -1,16 +1,16 @@
 function acceptarCookies() {
     document.getElementById('cookieBox').style.display = 'none';
-    localStorage.setItem('cookies_food', 'true');
+    localStorage.setItem('cookies_foodlogistic_v2', 'acceptades');
 }
 
 window.onload = function() {
-    if (localStorage.getItem('cookies_food') === 'true') {
+    if (localStorage.getItem('cookies_foodlogistic_v2')) {
         document.getElementById('cookieBox').style.display = 'none';
     }
 }
 
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert("Dades enviades a FoodLogístic S.A. Gràcies!");
+    alert("Formulari enviat correctament. Hem registrat el seu consentiment legal.");
     this.reset();
 });
