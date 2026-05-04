@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodLogístic S.A. | Logística Alimentària</title>
+    <!-- Enllaç directe sense carpeta -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="cookieBox" class="cookie-banner">
+        <p>FoodLogístic S.A. utilitza cookies. <a href="cookies.html">Més informació</a>.</p>
+        <button onclick="acceptarCookies()">Acceptar</button>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="FoodLogisticLogo.png" alt="FoodLogístic Logo">
+        </div>
+        <nav>
+            <a href="#empresa">Empresa</a>
+            <a href="#contacte">Contacte</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>FoodLogístic S.A.</h1>
+        <p>Solucions professionals amb una facturació de 25M€ anuals.</p>
+    </section>
+
+    <section id="empresa" class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>35 Treballadors</h3>
+                <p>Equip professional i qualificat.</p>
+            </div>
+            <div class="card">
+                <h3>Mataró</h3>
+                <p>Carrer de la Teixidora, núm. 13.</p>
+            </div>
+            <div class="card">
+                <h3>Registre</h3>
+                <p>Tom 45678, Foli 120, Full B-567890.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacte" class="form-section">
+        <div class="form-container">
+            <h2>Contacte</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Nom empresa" required>
+                <input type="email" placeholder="Email" required>
+                <textarea rows="4" placeholder="Missatge"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>NIF: A08123456 | <a href="privacitat.html">Privacitat</a> | <a href="cookies.html">Cookies</a></p>
+    </footer>
+
+    <!-- Enllaç directe al JS -->
+    <script src="script.js"></script>
+</body>
+</html>
