@@ -1,46 +1,127 @@
 :root {
+    /* Colors ajustats per a millor contrast (Accessibilitat) */
     --blau-fosc: #0a2e50;
     --blau-clar: #1a4a7a;
-    --verd: #4CAF50;
+    --verd: #2e7d32; /* Verd una mica més fosc per contrastar millor sobre blanc/gris */
     --blanc: #ffffff;
-    --gris: #f4f7f6;
+    --gris-fons: #f1f3f5; /* Gris una mica més intens per diferenciar millor les targetes */
+    --text-principal: #212529; /* Gris gairebé negre per a màxima llegibilitat */
 }
 
-body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--gris); color: #333; line-height: 1.6; }
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    margin: 0; 
+    background: var(--gris-fons); 
+    color: var(--text-principal); 
+    line-height: 1.6; 
+}
 
-header { background: var(--blanc); padding: 15px 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-.header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+/* MILLORA: VISIBILITAT DEL FOCUS (Navegació per teclat) */
+:focus-visible {
+    outline: 3px solid var(--verd);
+    outline-offset: 4px;
+}
+
+header { 
+    background: var(--blanc); 
+    padding: 15px 5%; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+}
+
+.header-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
 .main-logo { height: 60px; }
 
-nav a { text-decoration: none; color: var(--blau-fosc); font-weight: 700; margin-left: 20px; }
-.nav-cta { background: var(--blau-clar); color: white !important; padding: 12px 25px; border-radius: 5px; transition: 0.3s; }
-
-.hero { background: linear-gradient(rgba(10,46,80,0.85), rgba(10,46,80,0.85)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1500') center/cover; height: 350px; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-.hero h1 { font-size: 3rem; margin: 0; }
-.hero span { color: var(--verd); }
-
-.contact-section { padding: 60px 5%; }
-.form-card { max-width: 800px; margin: 0 auto; background: white; padding: 50px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
-
-/* INPUTS GRANS I PROFESSIONALS */
-input, textarea { 
-    width: 100%; padding: 18px; margin-bottom: 20px; border: 2px solid #eee; border-radius: 8px; 
-    font-size: 1.1rem; box-sizing: border-box; font-family: inherit; transition: 0.3s;
+nav a { 
+    text-decoration: none; 
+    color: var(--blau-fosc); 
+    font-weight: 700; 
+    margin-left: 20px; 
+    padding: 5px;
 }
-input:focus, textarea:focus { border-color: var(--blau-clar); outline: none; background: #fafcff; }
 
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.nav-cta { 
+    background: var(--blau-clar); 
+    color: white !important; 
+    padding: 12px 25px; 
+    border-radius: 5px; 
+    transition: 0.3s; 
+}
 
-.legal-checks { margin: 25px 0; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 8px; }
-.check { display: flex; align-items: flex-start; margin-bottom: 12px; font-size: 0.95rem; }
-.check input { width: 22px; height: 22px; margin-right: 12px; cursor: pointer; }
+/* HERO */
+.hero { 
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1500') center/cover; 
+    height: 350px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    text-align: center; 
+}
 
-.btn-main { background: var(--verd); color: white; border: none; padding: 20px; width: 100%; border-radius: 8px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
-.btn-main:hover { background: #3d8b40; transform: translateY(-2px); }
+.hero h1 { font-size: 3rem; margin: 0; }
+.hero span { color: #a5d6a7; } /* Verd clar per contrastar sobre el fons fosc de la imatge */
 
-.cookie-banner { position: fixed; bottom: 20px; left: 20px; right: 20px; background: #111; color: white; padding: 25px; border-radius: 12px; z-index: 1000; }
-.cookie-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; gap: 20px; }
-.btn-cookie { background: var(--verd); color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+/* FORMULARI */
+.contact-section { padding: 60px 5%; }
+.form-card { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    background: white; 
+    padding: 50px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
+}
 
-footer { background: #0a2e50; color: #cbd5e0; padding: 50px 5%; text-align: center; }
-footer a { color: white; text-decoration: none; margin: 0 10px; }
+input, textarea { 
+    width: 100%; 
+    padding: 18px; 
+    margin-bottom: 20px; 
+    border: 2px solid #ced4da; /* vora més visible */
+    border-radius: 8px; 
+    font-size: 1.1rem; 
+    box-sizing: border-box; 
+    font-family: inherit; 
+}
+
+.btn-main { 
+    background: var(--verd); 
+    color: white; 
+    border: none; 
+    padding: 20px; 
+    width: 100%; 
+    border-radius: 8px; 
+    font-size: 1.2rem; 
+    font-weight: 700; 
+    cursor: pointer; 
+}
+
+/* COOKIE BANNER */
+.cookie-banner { 
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
+    right: 20px; 
+    background: #1a1a1a; 
+    color: #eeeeee; 
+    padding: 25px; 
+    border-radius: 12px; 
+}
+
+footer { 
+    background: #0a2e50; 
+    color: #e9ecef; /* Text més clar per a millor contrast sobre blau fosc */
+    padding: 50px 5%; 
+    text-align: center; 
+}
+
+footer a { color: #fff; text-decoration: underline; }
