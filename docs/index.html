@@ -3,70 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLogístic S.A. | Logística Professional</title>
-    <!-- ARA ENLLAÇAT CORRECTAMENT A style.css -->
+    <title>FoodLogístic S.A. | Accessibilitat i Logística</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="cookieBox" class="cookie-banner">
+    <!-- BANNER DE COOKIES -->
+    <div id="cookieBox" class="cookie-banner" role="region" aria-label="Avís de cookies">
         <div class="cookie-container">
-            <p><strong>Avís de Cookies:</strong> FoodLogístic S.A. utilitza cookies pròpies per millorar la seva experiència. <a href="cookies.html">Més informació</a>.</p>
+            <p><strong>Avís de Cookies:</strong> Utilitzem cookies per millorar la teva experiència. <a href="cookies.html">Llegir política</a>.</p>
             <button class="btn-cookie accept" onclick="acceptarCookies()">Acceptar Totes</button>
         </div>
     </div>
 
     <header>
         <div class="header-container">
-            <img src="FoodLogisticLogo.png" alt="Logo FoodLogístic" class="main-logo">
-            <nav>
+            <!-- MILLORA: Alt text descriptiu -->
+            <img src="FoodLogisticLogo.png" alt="Logotip de FoodLogístic S.A., expert en transport alimentari" class="main-logo">
+            <nav aria-label="Navegació principal">
                 <a href="#empresa">L'Empresa</a>
                 <a href="#contacte" class="nav-cta">Contactar</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Excel·lència Logística<br><span>FoodLogístic S.A.</span></h1>
-            <p>Especialistes en distribució alimentària amb una facturació de 25M€ anuals.</p>
-        </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Excel·lència Logística<br><span>FoodLogístic S.A.</span></h1>
+                <p>Distribució segura i eficient amb compromís ambiental.</p>
+            </div>
+        </section>
 
-    <section id="contacte" class="contact-section">
-        <div class="form-card">
-            <h2>Formulari de Contacte Legal</h2>
-            <p>Si us plau, ompli tots els camps per rebre una proposta personalitzada.</p>
-            <form id="contactForm">
-                <input type="text" placeholder="Nom Complet / Empresa" required>
-                <div class="row">
-                    <input type="email" placeholder="E-mail Corporatiu" required>
-                    <input type="tel" placeholder="Telèfon de contacte" required>
-                </div>
-                <textarea rows="6" placeholder="Detalli les seves necessitats logístiques..." required></textarea>
+        <section id="contacte" class="contact-section">
+            <div class="form-card">
+                <h2>Formulari de Contacte</h2>
+                <form id="contactForm">
+                    <label for="nom">Nom Complet o Empresa</label>
+                    <input type="text" id="nom" name="nom" placeholder="Ex: Food Logistic S.L." required>
 
-                <div class="legal-checks">
-                    <div class="check">
-                        <input type="checkbox" id="p" required>
-                        <label for="p">He llegit i accepto la <a href="privacitat.html">Política de Privacitat</a> i el tractament de les meves dades ARSLOP. (Obligatori)</label>
+                    <div class="row">
+                        <div class="col">
+                            <label for="email">Correu electrònic corporatiu</label>
+                            <input type="email" id="email" name="email" placeholder="correu@empresa.com" required>
+                        </div>
+                        <div class="col">
+                            <label for="tel">Telèfon de contacte</label>
+                            <input type="tel" id="tel" name="tel" placeholder="600 000 000" required>
+                        </div>
                     </div>
-                    <div class="check">
-                        <input type="checkbox" id="c">
-                        <label for="c">Autoritzo l'enviament de comunicacions comercials segons l'<a href="avis-legal.html">Avís Legal</a> de l'empresa.</label>
+
+                    <label for="msg">El seu missatge</label>
+                    <textarea id="msg" name="msg" rows="6" placeholder="Expliqui'ns la seva necessitat..." required></textarea>
+
+                    <div class="legal-checks">
+                        <div class="check">
+                            <input type="checkbox" id="p" name="privacitat" required>
+                            <label for="p">Accepto la <a href="privacitat.html">Política de Privacitat</a>. (Obligatori)</label>
+                        </div>
                     </div>
-                </div>
-                <button type="submit" class="btn-main">Enviar Sol·licitud</button>
-            </form>
-        </div>
-    </section>
+                    <button type="submit" class="btn-main">Enviar Sol·licitud</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p><strong>FoodLogístic S.A.</strong> | NIF: A08123456</p>
         <p>Carrer de la Teixidora, 13, 08302 Mataró (Barcelona)</p>
-        <div class="footer-links">
-            <a href="avis-legal.html">Avís Legal</a> | <a href="privacitat.html">Privacitat</a> | <a href="cookies.html">Cookies</a>
-        </div>
+        <nav class="footer-links" aria-label="Enllaços legals">
+            <a href="avis-legal.html">Avís Legal</a> | 
+            <a href="privacitat.html">Privacitat</a> | 
+            <a href="cookies.html">Cookies</a>
+        </nav>
     </footer>
 
     <script src="script.js"></script>
