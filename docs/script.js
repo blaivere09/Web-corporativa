@@ -1,37 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    // =========================
-    // COOKIES
-    // =========================
-    const cookieBox = document.getElementById('cookieBox');
+    const cookieBox = document.getElementById("cookieBox");
 
     window.acceptarCookies = function () {
-        cookieBox.style.display = 'none';
-        localStorage.setItem('food_cookies_v4', 'true');
+        cookieBox.style.display = "none";
+        localStorage.setItem("cookies_ok", "1");
     };
 
-    if (localStorage.getItem('food_cookies_v4')) {
-        cookieBox.style.display = 'none';
+    if (localStorage.getItem("cookies_ok")) {
+        cookieBox.style.display = "none";
     }
 
-
-    // =========================
-    // FORMULARI CONTACTE
-    // =========================
-    const form = document.getElementById('contactForm');
+    const form = document.getElementById("contactForm");
 
     if (form) {
-        form.addEventListener('submit', function (e) {
+        form.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            // Simulació d'enviament (com demana la tasca)
-            alert(
-                "FoodLogístic S.A. ha rebut la seva sol·licitud.\n" +
-                "Ens posarem en contacte amb vostè en breu."
-            );
+            alert("FoodLogístic S.A. ha rebut el seu missatge.");
 
             form.reset();
         });
     }
-
 });
