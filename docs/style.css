@@ -1,191 +1,156 @@
 :root {
-    --blau-fosc: #0a2e50;
-    --blau-clar: #1a4a7a;
+    --blau: #0a2e50;
     --verd: #2e7d32;
-    --blanc: #ffffff;
     --gris: #f4f6f8;
-    --text: #1f2937;
+    --text: #1e293b;
 }
 
-/* ===== BASE ===== */
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     background: var(--gris);
     color: var(--text);
     font-size: 18px;
-    line-height: 1.7;
 }
 
 /* ACCESSIBILITAT TAB */
 :focus-visible {
     outline: 3px solid var(--verd);
-    outline-offset: 4px;
+    outline-offset: 3px;
 }
 
-/* ===== HEADER ===== */
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* HEADER */
 header {
     background: white;
-    padding: 18px 6%;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-.header-container {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.main-logo {
-    height: 72px;
+.logo {
+    height: 65px;
 }
 
-/* NAV */
 nav a {
-    margin-left: 18px;
+    margin-left: 15px;
     text-decoration: none;
     font-weight: 700;
-    color: var(--blau-fosc);
-    font-size: 17px;
-    transition: 0.2s;
+    color: var(--blau);
 }
 
-nav a:hover {
-    color: var(--verd);
-}
-
-/* ===== HERO ===== */
+/* HERO */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1601598851547-4302969d0614') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1601598851547') center/cover;
     color: white;
     text-align: center;
-    padding: 130px 20px;
+    padding: 120px 20px;
 }
 
 .hero h1 {
     font-size: 3rem;
-    margin-bottom: 10px;
 }
 
-.hero span {
-    color: #a5d6a7;
-}
-
-/* ===== SECCIONS ===== */
+/* SECCIONS */
 section {
-    padding: 80px 8%;
+    padding: 70px 0;
 }
 
 h2 {
     text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 40px;
-    color: var(--blau-fosc);
+    margin-bottom: 30px;
+    color: var(--blau);
 }
 
-/* ===== SERVEIS ===== */
-.cards {
+/* CARDS */
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
 .card {
     background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: 0.3s;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.card:hover {
-    transform: translateY(-6px);
-}
-
-/* ===== FORMULARI ===== */
-.form-card {
-    max-width: 800px;
+/* FORM */
+.form {
+    max-width: 600px;
     margin: auto;
     background: white;
-    padding: 50px;
-    border-radius: 18px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    padding: 40px;
+    border-radius: 12px;
 }
 
 input, textarea {
     width: 100%;
-    padding: 15px;
+    padding: 12px;
     margin: 10px 0;
-    border-radius: 10px;
-    border: 2px solid #ddd;
-    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
-/* BOTONS */
-.btn-main, .btn-cookie {
+.btn {
     background: var(--verd);
     color: white;
     border: none;
-    padding: 14px 20px;
-    border-radius: 10px;
-    font-size: 16px;
+    padding: 12px;
+    width: 100%;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-main:hover, .btn-cookie:hover {
-    background: #256428;
 }
 
 /* COOKIES */
 .cookie-banner {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
     background: #111;
     color: white;
-    padding: 18px;
-    border-radius: 12px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
 }
 
 /* FOOTER */
 footer {
-    background: var(--blau-fosc);
+    background: var(--blau);
     color: white;
     text-align: center;
-    padding: 40px;
+    padding: 30px;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-
-    .header-container {
+    .header {
         flex-direction: column;
-        gap: 10px;
-    }
-
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
     }
 
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .cookie-banner {
         flex-direction: column;
-        text-align: center;
         gap: 10px;
     }
 }
