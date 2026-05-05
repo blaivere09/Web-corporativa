@@ -5,19 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FoodLogístic S.A.</title>
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <!-- COOKIES -->
 <div id="cookieBox" class="cookie-banner">
-    <p>Aquest web utilitza cookies.</p>
-    <button class="btn-cookie" onclick="acceptarCookies()">Acceptar</button>
+    <p>Aquest lloc utilitza cookies per millorar l’experiència.</p>
+    <button class="btn" onclick="acceptarCookies()">Acceptar</button>
 </div>
 
+<!-- HEADER -->
 <header>
-    <div class="header-container">
-        <img src="FoodLogisticLogo.png" class="main-logo" alt="FoodLogístic">
+    <div class="container header">
+        <img src="FoodLogisticLogo.png" class="logo" alt="FoodLogístic">
         <nav>
             <a href="#inici">Inici</a>
             <a href="#serveis">Serveis</a>
@@ -27,25 +29,31 @@
     </div>
 </header>
 
-<main>
-
+<!-- HERO -->
 <section id="inici" class="hero">
     <h1>FoodLogístic S.A.</h1>
-    <p>Logística alimentària eficient</p>
+    <p>Logística alimentària eficient i segura</p>
 </section>
 
+<!-- SERVEIS -->
 <section id="serveis">
     <h2>Serveis</h2>
-    <p>Transport refrigerat, distribució i logística sostenible.</p>
+    <div class="grid">
+        <div class="card">Transport refrigerat</div>
+        <div class="card">Distribució nacional</div>
+        <div class="card">Logística sostenible</div>
+    </div>
 </section>
 
+<!-- EMPRESA -->
 <section id="empresa">
     <h2>Sobre nosaltres</h2>
-    <p>Empresa especialitzada en logística alimentària.</p>
+    <p>Empresa especialitzada en logística alimentària amb més de 10 anys d’experiència.</p>
 </section>
 
+<!-- CONTACTE -->
 <section id="contacte">
-    <div class="form-card">
+    <div class="form">
         <h2>Contacte</h2>
 
         <form id="contactForm">
@@ -53,22 +61,14 @@
             <input type="email" placeholder="Email" required>
             <input type="tel" placeholder="Telèfon">
             <textarea placeholder="Missatge" required></textarea>
-
-            <label>
-                <input type="checkbox" required>
-                Accepto la privacitat
-            </label>
-
-            <button class="btn-main">Enviar</button>
+            <button class="btn">Enviar</button>
         </form>
     </div>
 </section>
 
-</main>
-
+<!-- FOOTER -->
 <footer>
     <p>FoodLogístic S.A. © 2026</p>
-
     <a href="avis-legal.html">Avís legal</a> |
     <a href="privacitat.html">Privacitat</a> |
     <a href="cookies.html">Cookies</a>
