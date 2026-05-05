@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.acceptarCookies = function () {
         cookieBox.style.display = "none";
-        localStorage.setItem("cookies_ok", "1");
+        localStorage.setItem("cookies_ok", "true");
     };
 
     if (localStorage.getItem("cookies_ok")) {
@@ -16,10 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form) {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
-
-            alert("FoodLogístic S.A. ha rebut el seu missatge.");
-
+            alert("Missatge enviat correctament a FoodLogístic S.A.");
             form.reset();
         });
     }
+
 });
