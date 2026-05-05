@@ -3,82 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodLogístic S.A. | Accessibilitat i Logística</title>
+    <title>FoodLogístic S.A.</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <!-- BANNER DE COOKIES -->
-    <div id="cookieBox" class="cookie-banner" role="region" aria-label="Avís de cookies">
-        <div class="cookie-container">
-            <p><strong>Avís de Cookies:</strong> Utilitzem cookies per millorar la teva experiència. <a href="cookies.html">Llegir política</a>.</p>
-            <button class="btn-cookie accept" onclick="acceptarCookies()">Acceptar Totes</button>
+<!-- COOKIES -->
+<div id="cookieBox" class="cookie-banner">
+    <p>Utilitzem cookies per millorar l'experiència. <a href="cookies.html">Llegir més</a></p>
+    <button onclick="acceptarCookies()">Acceptar</button>
+</div>
+
+<header>
+    <div class="header-container">
+        <img src="FoodLogisticLogo.png" alt="Logotip FoodLogístic" class="logo">
+        <nav>
+            <a href="#inici">Inici</a>
+            <a href="#serveis">Serveis</a>
+            <a href="#empresa">Empresa</a>
+            <a href="#contacte">Contacte</a>
+        </nav>
+    </div>
+</header>
+
+<section id="inici" class="hero">
+    <h1>Logística Alimentària de Confiança</h1>
+    <p>Transport segur, eficient i sostenible.</p>
+</section>
+
+<section id="serveis">
+    <h2>Serveis</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Transport refrigerat</h3>
+            <p>Control total de temperatura.</p>
+        </div>
+        <div class="card">
+            <h3>Distribució nacional</h3>
+            <p>Cobertura a tot el territori.</p>
+        </div>
+        <div class="card">
+            <h3>Logística sostenible</h3>
+            <p>Reducció d’emissions.</p>
         </div>
     </div>
+</section>
 
-    <header>
-        <div class="header-container">
-            <!-- MILLORA: Alt text descriptiu -->
-            <img src="FoodLogisticLogo.png" alt="Logotip de FoodLogístic S.A., expert en transport alimentari" class="main-logo">
-            <nav aria-label="Navegació principal">
-                <a href="#empresa">L'Empresa</a>
-                <a href="#contacte" class="nav-cta">Contactar</a>
-            </nav>
-        </div>
-    </header>
+<section id="empresa">
+    <h2>Sobre nosaltres</h2>
+    <p>FoodLogístic S.A. és una empresa especialitzada en el transport d’aliments amb anys d’experiència en el sector logístic.</p>
+</section>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Excel·lència Logística<br><span>FoodLogístic S.A.</span></h1>
-                <p>Distribució segura i eficient amb compromís ambiental.</p>
-            </div>
-        </section>
+<section id="contacte">
+    <h2>Contacte</h2>
+    <form>
+        <input type="text" placeholder="Nom" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Telèfon">
+        <textarea placeholder="Missatge" required></textarea>
 
-        <section id="contacte" class="contact-section">
-            <div class="form-card">
-                <h2>Formulari de Contacte</h2>
-                <form id="contactForm">
-                    <label for="nom">Nom Complet o Empresa</label>
-                    <input type="text" id="nom" name="nom" placeholder="Ex: Food Logistic S.L." required>
+        <label>
+            <input type="checkbox" required>
+            Accepto la <a href="privacitat.html">política de privacitat</a>
+        </label>
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="email">Correu electrònic corporatiu</label>
-                            <input type="email" id="email" name="email" placeholder="correu@empresa.com" required>
-                        </div>
-                        <div class="col">
-                            <label for="tel">Telèfon de contacte</label>
-                            <input type="tel" id="tel" name="tel" placeholder="600 000 000" required>
-                        </div>
-                    </div>
+        <button type="submit">Enviar</button>
+    </form>
+</section>
 
-                    <label for="msg">El seu missatge</label>
-                    <textarea id="msg" name="msg" rows="6" placeholder="Expliqui'ns la seva necessitat..." required></textarea>
+<footer>
+    <p>© 2026 FoodLogístic S.A.</p>
+    <a href="avis-legal.html">Avís legal</a> |
+    <a href="privacitat.html">Privacitat</a> |
+    <a href="cookies.html">Cookies</a>
+</footer>
 
-                    <div class="legal-checks">
-                        <div class="check">
-                            <input type="checkbox" id="p" name="privacitat" required>
-                            <label for="p">Accepto la <a href="privacitat.html">Política de Privacitat</a>. (Obligatori)</label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-main">Enviar Sol·licitud</button>
-                </form>
-            </div>
-        </section>
-    </main>
+<script src="script.js"></script>
 
-    <footer>
-        <p><strong>FoodLogístic S.A.</strong> | NIF: A08123456</p>
-        <p>Carrer de la Teixidora, 13, 08302 Mataró (Barcelona)</p>
-        <nav class="footer-links" aria-label="Enllaços legals">
-            <a href="avis-legal.html">Avís Legal</a> | 
-            <a href="privacitat.html">Privacitat</a> | 
-            <a href="cookies.html">Cookies</a>
-        </nav>
-    </footer>
+<!-- AFEGEIX AQUÍ STATCOUNTER -->
 
-    <script src="script.js"></script>
 </body>
 </html>
