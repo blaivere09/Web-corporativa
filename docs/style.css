@@ -11,9 +11,10 @@ body{
     background:var(--gris);
     color:var(--text);
     font-size:18px;
+    line-height:1.6;
 }
 
-/* TAB ACCESSIBLE */
+/* ACCESSIBILITAT TAB */
 :focus-visible{
     outline:3px solid var(--verd);
     outline-offset:4px;
@@ -61,9 +62,9 @@ nav a{
 /* SECCIONS */
 section{padding:70px 0;}
 
-h2{text-align:center;margin-bottom:30px;color:var(--blau);}
+h2{text-align:center;color:var(--blau);margin-bottom:30px;}
 
-/* CARDS */
+/* GRID */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -94,7 +95,7 @@ input,textarea{
     border:1px solid #ccc;
 }
 
-/* 🔥 BOTONS UNIFICATS (IMPORTANT) */
+/* BOTONS UNIFICATS */
 .btn{
     background:var(--verd);
     color:white;
@@ -103,8 +104,8 @@ input,textarea{
     border-radius:10px;
     font-weight:700;
     cursor:pointer;
-    display:inline-block;
     text-decoration:none;
+    display:inline-block;
     text-align:center;
     transition:.2s;
 }
@@ -114,7 +115,7 @@ input,textarea{
     transform:translateY(-2px);
 }
 
-/* BOTÓ SECUNDARI (Tornar) */
+/* BOTÓ SECUNDARI */
 .btn-secondary{
     background:transparent;
     border:2px solid var(--verd);
