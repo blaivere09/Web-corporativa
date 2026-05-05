@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.acceptarCookies = function () {
         cookieBox.style.display = "none";
-        localStorage.setItem("cookies_foodlog", "accepted");
+        localStorage.setItem("cookies_foodlog", "ok");
     };
 
-    if (localStorage.getItem("cookies_foodlog") === "accepted") {
+    if (localStorage.getItem("cookies_foodlog") === "ok") {
         cookieBox.style.display = "none";
     }
 
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form) {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
-            alert("FoodLogístic ha rebut el teu missatge.");
+            alert("Missatge enviat correctament a FoodLogístic S.A.");
             form.reset();
         });
     }
