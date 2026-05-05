@@ -1,13 +1,14 @@
+/* VARIABLES */
 :root {
-    /* Colors ajustats per a millor contrast (Accessibilitat) */
     --blau-fosc: #0a2e50;
     --blau-clar: #1a4a7a;
-    --verd: #2e7d32; /* Verd una mica més fosc per contrastar millor sobre blanc/gris */
+    --verd: #2e7d32;
     --blanc: #ffffff;
-    --gris-fons: #f1f3f5; /* Gris una mica més intens per diferenciar millor les targetes */
-    --text-principal: #212529; /* Gris gairebé negre per a màxima llegibilitat */
+    --gris-fons: #f1f3f5;
+    --text-principal: #212529;
 }
 
+/* BASE */
 body { 
     font-family: 'Montserrat', sans-serif; 
     margin: 0; 
@@ -16,12 +17,18 @@ body {
     line-height: 1.6; 
 }
 
-/* MILLORA: VISIBILITAT DEL FOCUS (Navegació per teclat) */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ACCESSIBILITAT */
 :focus-visible {
     outline: 3px solid var(--verd);
     outline-offset: 4px;
 }
 
+/* HEADER */
 header { 
     background: var(--blanc); 
     padding: 15px 5%; 
@@ -39,73 +46,108 @@ header {
     margin: 0 auto; 
 }
 
-.main-logo { height: 60px; }
+.main-logo { 
+    height: 60px; 
+}
 
 nav a { 
     text-decoration: none; 
     color: var(--blau-fosc); 
     font-weight: 700; 
     margin-left: 20px; 
-    padding: 5px;
 }
 
 .nav-cta { 
     background: var(--blau-clar); 
     color: white !important; 
-    padding: 12px 25px; 
+    padding: 10px 20px; 
     border-radius: 5px; 
-    transition: 0.3s; 
 }
 
 /* HERO */
 .hero { 
-    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1500') center/cover; 
-    height: 350px; 
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
+    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1500') center/cover; 
+    height: 400px; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     color: white; 
     text-align: center; 
+    padding: 20px;
 }
 
-.hero h1 { font-size: 3rem; margin: 0; }
-.hero span { color: #a5d6a7; } /* Verd clar per contrastar sobre el fons fosc de la imatge */
+.hero h1 { font-size: 3rem; }
+.hero span { color: #a5d6a7; }
+
+/* SECCIONS */
+section {
+    padding: 60px 5%;
+}
+
+/* SERVEIS (IMPORTANT PER LA TASCA) */
+.cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 250px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* EMPRESA */
+#empresa {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+}
 
 /* FORMULARI */
 .contact-section { padding: 60px 5%; }
+
 .form-card { 
     max-width: 800px; 
     margin: 0 auto; 
     background: white; 
-    padding: 50px; 
+    padding: 40px; 
     border-radius: 15px; 
     box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
 }
 
 input, textarea { 
     width: 100%; 
-    padding: 18px; 
-    margin-bottom: 20px; 
-    border: 2px solid #ced4da; /* vora més visible */
+    padding: 15px; 
+    margin-bottom: 15px; 
+    border: 2px solid #ced4da;
     border-radius: 8px; 
-    font-size: 1.1rem; 
-    box-sizing: border-box; 
-    font-family: inherit; 
+    font-size: 1rem; 
 }
 
+label {
+    font-weight: 600;
+}
+
+/* BOTÓ */
 .btn-main { 
     background: var(--verd); 
     color: white; 
     border: none; 
-    padding: 20px; 
+    padding: 15px; 
     width: 100%; 
     border-radius: 8px; 
-    font-size: 1.2rem; 
+    font-size: 1.1rem; 
     font-weight: 700; 
     cursor: pointer; 
 }
 
-/* COOKIE BANNER */
+/* COOKIES */
 .cookie-banner { 
     position: fixed; 
     bottom: 20px; 
@@ -113,15 +155,43 @@ input, textarea {
     right: 20px; 
     background: #1a1a1a; 
     color: #eeeeee; 
-    padding: 25px; 
+    padding: 20px; 
     border-radius: 12px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* FOOTER */
 footer { 
-    background: #0a2e50; 
-    color: #e9ecef; /* Text més clar per a millor contrast sobre blau fosc */
-    padding: 50px 5%; 
+    background: var(--blau-fosc); 
+    color: #e9ecef; 
+    padding: 40px 5%; 
     text-align: center; 
 }
 
-footer a { color: #fff; text-decoration: underline; }
+footer a { 
+    color: #fff; 
+}
+
+/* RESPONSIVE (IMPORTANT PER NOTA) */
+@media (max-width: 768px) {
+
+    .header-container {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
